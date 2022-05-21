@@ -3,6 +3,7 @@ import Footer from '../../components/Footer';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import ChooseUs from './ChooseUs';
+import ProudSection from './ProudSection';
 import Tools from './Tools';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             </div>
             <Tools />
             <ChooseUs/>
+            <ProudSection/>
             <BusinessSummary/>
             <Footer />
         </div>

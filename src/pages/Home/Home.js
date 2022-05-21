@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../../components/Footer';
 import Banner from './Banner';
+import Tools from './Tools';
 
 const Home = () => {
     return (
@@ -8,7 +9,8 @@ const Home = () => {
             <div className="lg:px-12">
                 <Banner />
             </div>
-            <Footer/>
+            <Tools />
+            <Footer />
         </div>
     );
 };

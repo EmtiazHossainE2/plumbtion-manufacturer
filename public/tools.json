@@ -1,0 +1,41 @@
+[
+    {
+        "id": "1" ,
+        "img": "https://i.ibb.co/jLJsWSp/pipe1.jpg",
+        "name": "STAINLESS STEEL ERW PIPES & TUBES" ,
+        "des": "Oshwin Overseas is a leading Stainless Steel Erw Pipe manufacturer in India and we produce and sell different grades, types and sizes of the pipes. Our product range includes the most used SS 304 Erw Pipe products as well as the second most used SS 316 Erw Pipe products." ,
+        "minOrder": "1000" ,
+        "available": "15000" ,
+        "price": "342" ,
+        "ratings": 5 ,
+        "diameter": "1/8″ NB to 6″ NB " ,
+        "thickness": "Up to Sch 80 " ,
+        "length": "Max 12 meters" 
+    },
+    {
+        "id": "2" ,
+        "img": "https://i.ibb.co/Z62tB9N/pipe2.jpg",
+        "name": "STAINLESS STEEL SEAMLESS PIPES" ,
+        "des": "The erw pipes are electric resistant welded from either strips or coils in a longitudinal direction to add strength to the pipe. There are different dimensions and standards of these pipes. The Erw Schedule 30m Pipe is one of the medium range schedules that allows medium range pressure containment of the pipes." ,
+        "minOrder": "600" ,
+        "available": "12000" ,
+        "price": "690" ,
+        "ratings": 4.5 ,
+        "diameter": "6 mm to 114.3 mm" ,
+        "thickness": "0.50 mm-6.00 mm " ,
+        "length": "Max 30 meters" 
+    },
+    {
+        "id": "3" ,
+        "img": "https://i.ibb.co/tBsmnqN/pipe3.jpg" ,
+        "name": "BRIGHT ANNEALED TUBES" ,
+        "des": "The schedules govern the wall thickness for different outer diameter sizes of the pipes. Looking for ss erw pipe manufacturer in Gujarat? We have inhouse facilities to produce Stainless Steel Welded Pipes in Ahmedabad, Gujarat." ,
+        "minOrder": "500" ,
+        "available": "26000" ,
+        "price": "452" ,
+        "ratings": 5 ,
+        "diameter": " 6mm-76.2mm (1/2″-3″)" ,
+        "thickness": "0.7-3.38mm " ,
+        "length": "Max 9.00 meters" 
+    }
+]

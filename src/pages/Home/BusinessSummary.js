@@ -8,7 +8,7 @@ const BusinessSummary = () => {
         <div className='lg:px-12  grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4 mx-4  mb-12'>
             <div className="card lg:max-w-lg bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
-                    <span className='text-4xl'><GiPipes/></span>
+                    <span className='text-5xl'><GiPipes/></span>
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title font-bold text-3xl ">37500 +</h2>
@@ -17,7 +17,7 @@ const BusinessSummary = () => {
             </div>
             <div className="card lg:max-w-lg bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
-                    <span className='text-4xl'><GiWarpPipe/></span>
+                    <span className='text-5xl'><GiWarpPipe/></span>
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title font-bold text-3xl ">21000 +</h2>
@@ -26,7 +26,7 @@ const BusinessSummary = () => {
             </div>
             <div className="card lg:max-w-lg bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
-                    <span className='text-4xl'><GrGroup/></span>
+                    <span className='text-5xl'><GrGroup/></span>
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title  font-bold text-3xl ">1200 +</h2>
@@ -35,7 +35,7 @@ const BusinessSummary = () => {
             </div>
             <div className="card lg:max-w-lg bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
-                    <span className='text-4xl'><GiPostOffice/></span>
+                    <span className='text-5xl'><GiPostOffice/></span>
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title font-bold text-3xl ">12 + </h2>

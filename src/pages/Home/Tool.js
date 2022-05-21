@@ -9,14 +9,15 @@ const Tool = ({ tool }) => {
             <figure><img className='w-full' src={img} alt="serviceMan" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name.slice(0, 20)}</h2>
-                <p>{des.slice(0, 100) + '...'}</p>
+                <p className='pb-2'>{des.slice(0, 100) + '...'}</p>
                 <div className="flex flex-col md:flex-row ">
-                    <p>Min Order : {minOrder}</p>
-                    <p>Available : {available}</p>
+                    <p className='font-bold'>Min Order : <span className='text-[#2a6ee4]'>{minOrder}</span></p>
+                    <p className='font-bold'>Price : $ <span className='text-[#2a6ee4]'>{price}</span></p>
                 </div>
                 <div className="flex flex-col md:flex-row">
-                    <p>Price : ${price}/per</p>
-                    <p>Ratings : {ratings}</p>
+                    <p className='font-bold'>Available : <span className='text-[#2a6ee4]'>{available}</span></p>
+                    <p className='font-bold'>Ratings : <span className='text-[#2a6ee4]'>{ratings}</span></p>
+                    
                 </div>
                 <div className="card-actions pt-3 ">
                     <Link to={'/tool/' + id} className='flex btn text-white btn-primary items-center'>

@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import About from './pages/About/About';
 import Login from './pages/Account/Login';
-import Signup from './pages/Account/Signup';
+import Signup from './pages/Account/SignUp';
 import Blog from './pages/Blog/Blog';
 import Contact from './pages/Contact/Contact';
 import Home from './pages/Home/Home';

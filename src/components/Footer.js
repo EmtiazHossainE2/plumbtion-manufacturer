@@ -5,7 +5,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
         <div className='text-center'>
-            <footer class="footer p-12 bg-base-200 text-base-content">
+            <footer class="footer p-12 bg-[#eeeff0] text-base-content">
                 <div>
                     <div>
                         <img className='w-[200px] py-2' src="https://i.ibb.co/9GBLfHR/logo1.png" alt="" />
@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-            <footer class="footer footer-center p-4 bg-base-300 text-base-content py-5">
+            <footer class="footer footer-center p-4 bg-[#e4e6ed] text-base-content py-5">
                 <div>
                     <p>Copyright © {currentYear} - All right reserved by <Link to='/' className='text-primary'>Plumbtion</Link></p>
                 </div>

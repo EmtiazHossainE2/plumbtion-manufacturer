@@ -31,11 +31,11 @@ const ReviewSection = () => {
         <section className="bg-[#F5F7FF] py-16 lg:px-12">
             <div>
                 <h2 className='text-center text-4xl font-bold  pb-8 pt-5'>People About Plumbtion </h2>
-                <p className='text-lg lg:px-28 mb-12'>We have decades of experience meeting the stringent regulations and certifications for the automotive, aerospace and medical device industries, which serve as benchmarks for all of the products we manufacture.</p>
+                <p className='text-lg px-5 lg:px-28 mb-12'>We have decades of experience meeting the stringent regulations and certifications for the automotive, aerospace and medical device industries, which serve as benchmarks for all of the products we manufacture.</p>
             </div>
 
             <Swiper
-                slidesPerView={2}
+                slidesPerView={1}
                 spaceBetween={30}
                 freeMode={true}
                 pagination={{
@@ -46,13 +46,13 @@ const ReviewSection = () => {
             >
                 <SwiperSlide className='pb-5'>
                     <div className="flex items-center justify-center cursor-pointer">
-                        <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
+                        <div class="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberOne?.title}</h2>
                                 <p>
                                     {numberOne?.rating && <Ratings ratings={numberOne?.rating} ></Ratings>}
                                 </p>
-                                <p> {numberOne?.des.slice(0, 180) + '...'}</p>
+                                <p> {numberOne?.des}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
                                         <div class="w-20 rounded-full">
@@ -72,13 +72,13 @@ const ReviewSection = () => {
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
                     <div className="flex items-center justify-center cursor-pointer">
-                        <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
+                        <div class="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberTwo?.title}</h2>
                                 <p>
                                     {numberTwo?.rating && <Ratings ratings={numberTwo?.rating} ></Ratings>}
                                 </p>
-                                <p> {numberTwo?.des.slice(0, 180) + '...'}</p>
+                                <p> {numberTwo?.des}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
                                         <div class="w-20 rounded-full">
@@ -98,7 +98,7 @@ const ReviewSection = () => {
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
                     <div className="flex items-center justify-center cursor-pointer">
-                        <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
+                        <div class="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberThree?.title}</h2>
                                 <p>
@@ -124,7 +124,7 @@ const ReviewSection = () => {
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
                     <div className="flex items-center justify-center cursor-pointer">
-                        <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
+                        <div class="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberFour?.title}</h2>
                                 <p>
@@ -150,7 +150,7 @@ const ReviewSection = () => {
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
                     <div className="flex items-center justify-center cursor-pointer">
-                        <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
+                        <div class="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberFive?.title}</h2>
                                 <p>
@@ -176,7 +176,7 @@ const ReviewSection = () => {
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
                     <div className="flex items-center justify-center cursor-pointer">
-                        <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
+                        <div class="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberSix?.title}</h2>
                                 <p>

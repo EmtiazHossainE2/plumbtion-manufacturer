@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BsCartCheck } from 'react-icons/bs';
 
 const Tool = ({ tool }) => {
-    const { img, name, des, _id, minOrder, available, price, ratings,diameter,thickness,length } = tool
+    const { img, name, des, _id, minOrder, available, price, ratings } = tool
     return (
         <div className="card lg:max-w-lg bg-base-100 ">
             <figure><img className='w-full' src={img} alt="serviceMan" /></figure>
@@ -12,7 +12,7 @@ const Tool = ({ tool }) => {
                 <p className='pb-2'>{des.slice(0, 100) + '...'}</p>
                 <div className="flex flex-col md:flex-row ">
                     <p className='font-bold'>Min Order : <span className='text-[#2a6ee4]'>{minOrder}</span></p>
-                    <p className='font-bold'>Price : $ <span className='text-[#2a6ee4]'>{price}</span></p>
+                    <p className='font-bold'>Price : $ <span className='text-[#2a6ee4]'>{price}<small>/p</small></span></p>
                 </div>
                 <div className="flex flex-col md:flex-row">
                     <p className='font-bold'>Available : <span className='text-[#2a6ee4]'>{available}</span></p>

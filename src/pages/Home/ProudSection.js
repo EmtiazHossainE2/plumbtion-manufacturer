@@ -8,7 +8,7 @@ const ProudSection = () => {
             <section className="flex flex-col lg:flex-row justify-center items-center bg-[url('https://i.ibb.co/YRrxdGN/appointment-handyman-bg.jpg')] bg-cover py-20 background-overlay" >
                 <div className='flex-1'>
                     <div className='text-center text-white space-y-8 border-2 rounded-lg px-8 py-8 lg:mx-16'>
-                        <h2 className='text-4xl '>$ <span className='text-8xl'>50</span> Million</h2>
+                        <h2 className='text-4xl '>$ <span className='text-8xl'>70</span> Million </h2>
                         <p className='text-xl'>Compensation that we have got <br /> for our clients.</p>
                     </div>
                 </div>

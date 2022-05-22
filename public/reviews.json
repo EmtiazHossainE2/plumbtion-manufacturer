@@ -1,0 +1,56 @@
+[
+    {
+        "id": "3101" ,
+        "img": "https://i.ibb.co/YDwQqs3/1.jpg" ,
+        "name": "Hilal A. Jamal" ,
+        "title": "A company you can enjoy" ,
+        "country" : "United State",
+        "des" : "Michael Gregory worked with me to bring my concept from design to reality - providing much appreciated guide gregory willaimas worked with me bring concept from design to reality designs workers industry." ,
+        "rating": 4.5
+    },
+    {
+        "id": "3102" ,
+        "img": "https://i.ibb.co/grZW86D/2.jpg" ,
+        "name": "Sj Rion Talukder" ,
+        "title": "Amwerk rocks!" ,
+        "country" : "Australia",
+        "des" : "Factory Press Company is professional, creative and concept from knowledgeable. Dwayne our designer was actual teachings the great explorer of the truth patient, know how to pursue pleasure accommodating." ,
+        "rating": 5
+    },
+    {
+        "id": "3103" ,
+        "img": "https://i.ibb.co/smhjpyT/3.jpg" ,
+        "name": "Al JIhad" ,
+        "title": "Great explorer of the truth" ,
+        "country" : "Bangladesh",
+        "des" : "This company is professional, creative and concept from knowledgeable. Dwayne our designer was actual teachings the great explorer of the truth patient, know how to pursue pleasure accommodating and work. " ,
+        "rating": 4
+    },
+    {
+        "id": "3104" ,
+        "img": "https://i.ibb.co/cT4dM6w/4.jpg" ,
+        "name": "Mehedi Hasan" ,
+        "title": "Building trust takes" ,
+        "country" : "India",
+        "des" : "The best part about Amwerk is that you work with such passionate people who are eager to solve challenges. I love that I get to work with people from all over the world and from a variety of different cultures who are dedicated and enjoy their job." ,
+        "rating": 5
+    },
+    {
+        "id": "3105" ,
+        "img": "https://i.ibb.co/CvMH9gG/5.jpg" ,
+        "name": "Rifat Rasel" ,
+        "title": "A leap of faith" ,
+        "country" : "China",
+        "des" : "Factory Press Company is professional, creative and concept from knowledgeable. Dwayne our designer was actual teachings the great explorer of the truth patient, know how to pursue pleasure accommodating." ,
+        "rating": 4.5
+    },
+    {
+        "id": "3106" ,
+        "img": "https://i.ibb.co/4KNK3p2/6.jpg" ,
+        "name": "Mohammad Muiz" ,
+        "title": "culture of collaboration " ,
+        "country" : "Russia",
+        "des" : "The best part about Amwerk is that you work with such passionate people who are eager to solve challenges. I love that I get to work with people from all over the world and from a variety of different cultures who are dedicated and enjoy their job." ,
+        "rating": 5
+    }
+]

@@ -28,4 +28,13 @@ https://i.ibb.co/KNwgyn2/2.png
 https://i.ibb.co/0y2W5Bb/3.png
 https://i.ibb.co/Dr6Hddw/4.png
 https://i.ibb.co/M5hdN6F/5.png
+
+
+reviews 
+https://i.ibb.co/YDwQqs3/1.jpg
+https://i.ibb.co/grZW86D/2.jpg
+https://i.ibb.co/smhjpyT/3.jpg
+https://i.ibb.co/cT4dM6w/4.jpg
+https://i.ibb.co/CvMH9gG/5.jpg
+https://i.ibb.co/4KNK3p2/6.jpg
  */

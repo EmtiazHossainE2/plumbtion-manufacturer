@@ -1,6 +1,6 @@
 import React from 'react';
 import banner4 from '../../assets/images/banner4.jpg'
-import {  AiOutlineContacts } from 'react-icons/ai';
+import { AiOutlineContacts } from 'react-icons/ai';
 
 const GetInTouch = () => {
     return (
@@ -35,8 +35,8 @@ const GetInTouch = () => {
                             <p className='text-lg text-gray-500'>Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>
                         </div>
                         <div className='grid grid-cols-1  pt-5 capitalize'>
-                            <div class="card bg-white">
-                                <div class="card-body">
+                            <div className="card bg-white">
+                                <div className="card-body">
                                     <form className='space-y-3'>
                                         <input
                                             type='text'

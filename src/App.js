@@ -10,6 +10,8 @@ import Contact from './pages/Contact/Contact';
 import Home from './pages/Home/Home';
 import { Toaster } from 'react-hot-toast';
 import NotFound from './components/NotFound';
+import RequireAuth from './pages/Account/RequireAuth';
+import ToolDetail from './pages/Home/ToolDetail';
 
 const App = () => {
     return (
@@ -18,6 +20,9 @@ const App = () => {
                 <ScrollToTop>
                     <Routes >
                         <Route path='/' element={<Home />}></Route>
+                        <Route path='/tool/:toolId' element={
+                            <RequireAuth><ToolDetail/></RequireAuth>
+                        }></Route>
                         <Route path='/blog' element={<Blog />}></Route>
                         <Route path='/about' element={<About />}></Route>
                         <Route path='/contact' element={<Contact />}></Route>

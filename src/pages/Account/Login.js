@@ -73,7 +73,6 @@ const Login = () => {
         }
     }
 
-
     return (
         <section>
             <div className='flex flex-col lg:flex-row py-8 lg:h-[100vh] items-center justify-evenly gap-12 '>

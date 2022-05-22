@@ -1,7 +1,6 @@
 import React from 'react';
 import banner4 from '../../assets/images/banner4.jpg'
-import { AiOutlineMail, AiOutlineContacts } from 'react-icons/ai';
-import { BsFillTelephoneOutboundFill } from 'react-icons/bs';
+import {  AiOutlineContacts } from 'react-icons/ai';
 
 const GetInTouch = () => {
     return (

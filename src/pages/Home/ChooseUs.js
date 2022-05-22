@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsAward ,BsGift,BsPeople, BsFillTelephoneForwardFill,BsCurrencyDollar } from 'react-icons/bs';
+import { BsGift,BsPeople,BsCurrencyDollar } from 'react-icons/bs';
 import { AiOutlineContacts } from 'react-icons/ai';
 
 const ChooseUs = () => {

@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { FreeMode, Pagination } from "swiper";
+import Ratings from './Ratings';
 
 const ReviewSection = () => {
 
@@ -34,7 +35,7 @@ const ReviewSection = () => {
             </div>
 
             <Swiper
-                slidesPerView={1}
+                slidesPerView={2}
                 spaceBetween={30}
                 freeMode={true}
                 pagination={{
@@ -44,11 +45,13 @@ const ReviewSection = () => {
                 className="mySwiper"
             >
                 <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center cursor-pointer">
                         <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberOne?.title}</h2>
-                                <p>Ratings : {numberOne?.rating}</p>
+                                <p>
+                                    {numberOne?.rating && <Ratings ratings={numberOne?.rating} ></Ratings>}
+                                </p>
                                 <p> {numberOne?.des.slice(0, 180) + '...'}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
@@ -68,11 +71,13 @@ const ReviewSection = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center cursor-pointer">
                         <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberTwo?.title}</h2>
-                                <p>Ratings : {numberTwo?.rating}</p>
+                                <p>
+                                    {numberTwo?.rating && <Ratings ratings={numberTwo?.rating} ></Ratings>}
+                                </p>
                                 <p> {numberTwo?.des.slice(0, 180) + '...'}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
@@ -92,11 +97,13 @@ const ReviewSection = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center cursor-pointer">
                         <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberThree?.title}</h2>
-                                <p>Ratings : {numberThree?.rating}</p>
+                                <p>
+                                    {numberThree?.rating && <Ratings ratings={numberThree?.rating} ></Ratings>}
+                                </p>
                                 <p> {numberThree?.des.slice(0, 180) + '...'}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
@@ -116,11 +123,13 @@ const ReviewSection = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center cursor-pointer">
                         <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberFour?.title}</h2>
-                                <p>Ratings : {numberFour?.rating}</p>
+                                <p>
+                                    {numberFour?.rating && <Ratings ratings={numberFour?.rating} ></Ratings>}
+                                </p>
                                 <p> {numberFour?.des.slice(0, 180) + '...'}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
@@ -140,11 +149,13 @@ const ReviewSection = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center cursor-pointer">
                         <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberFive?.title}</h2>
-                                <p>Ratings : {numberFive?.rating}</p>
+                                <p>
+                                    {numberFive?.rating && <Ratings ratings={numberFive?.rating} ></Ratings>}
+                                </p>
                                 <p> {numberFive?.des.slice(0, 180) + '...'}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
@@ -164,11 +175,13 @@ const ReviewSection = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center cursor-pointer">
                         <div class="card lg:max-w-lg bg-base-100 shadow-xl mb-8 ">
                             <div class="card-body ">
                                 <h2 class="card-title capitalize">{numberSix?.title}</h2>
-                                <p>Ratings : {numberSix?.rating}</p>
+                                <p>
+                                    {numberSix?.rating && <Ratings ratings={numberSix?.rating} ></Ratings>}
+                                </p>
                                 <p> {numberSix?.des.slice(0, 180) + '...'}</p>
                                 <div className='flex gap-5 pt-5'>
                                     <div class="avatar">
@@ -187,8 +200,6 @@ const ReviewSection = () => {
                         </div>
                     </div>
                 </SwiperSlide>
-
-
             </Swiper >
         </section >
     );

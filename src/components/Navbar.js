@@ -1,9 +1,20 @@
 
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo1.png'
+import auth from '../Firebase/firebase.init';
+import demoProfile from '../assets/images/demoProfile.png'
 
 const Navbar = ({ children }) => {
+    const navigate = useNavigate();
+    const [user] = useAuthState(auth)
+
+    const logOut = () => {
+        signOut(auth)
+        navigate('/login');
+    }
     const menuItems = <>
         <li>
             <NavLink to='/' className='rounded-lg '>
@@ -25,38 +36,50 @@ const Navbar = ({ children }) => {
                 About
             </NavLink>
         </li>
-        <li>
+        {user?.uid
+            ?
+            <li className='dropdown  dropdown-end '>
+                <label
+                    tabIndex='0'
+                    className='rounded-lg'
+                >
+                    {user?.photoURL
+                        ?
+                        <div className="avatar">
+                            <div className="w-8  rounded-full cursor-pointer">
+                                <img src={user?.photoURL} alt="User" />
+                            </div>
+                        </div>
+                        :
+                        <div className="avatar">
+                            <div className="w-8 rounded-full cursor-pointer">
+                                <img src={demoProfile} alt="Demo" />
+                            </div>
+                        </div>
+                    }
+                </label>
+                <ul
+                    tabIndex='0'
+                    className='dropdown-content bg-[#0b1623] text-white menu p-2 shadow space-y-2 w-52'
+                >
+                    <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
+                    <li><NavLink to='/dashboard/my-booking' className='text-lg'>My Booking</NavLink></li>
+                    <li><NavLink to='/dashboard/my-review' className='text-lg'>My Review</NavLink></li>
+                    <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
+                </ul>
+            </li>
+            :
             <NavLink to='/login' className='rounded-lg text-md font-bold pt-3'>
                 Login
             </NavLink>
-        </li>
-
-        <li className='dropdown  dropdown-end '>
-            <label
-                tabIndex='0'
-                className='rounded-lg'
-            >
-                Dashboard
-            </label>
-            <ul
-                tabIndex='0'
-                className='dropdown-content bg-[#0b1623] text-white menu p-2 shadow space-y-1 w-52'
-            >
-                <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
-                <li><NavLink to='/dashboard/my-booking' className='text-lg'>My Booking</NavLink></li>
-                <li><NavLink to='/dashboard/my-review' className='text-lg'>My Review</NavLink></li>
-
-            </ul>
-        </li>
-
-
+        }
     </>
     return (
         <div >
             <div className="drawer drawer-end">
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col ">
-                    <div className="w-full navbar bg-[#0b1623] text-white lg:px-12 sticky top-0 z-50" >
+                    <div className="w-full navbar bg-[#0b1623] text-white  lg:px-12 sticky top-0 z-50" >
                         <Link to='/' className="flex-1 text-2xl font-bold px-2 mx-2 text-white">
                             <img className='w-[200px] py-2' src={logo} alt="plumbtion logo" />
                         </Link>
@@ -99,11 +122,35 @@ const Navbar = ({ children }) => {
                             </NavLink>
                         </li>
                         {/* mobile menu end */}
-                        <li>
-                            <NavLink to='/login' className='rounded-lg text-md font-bold pt-3 mb-5'>
-                                Login
-                            </NavLink>
-                        </li>
+                        {user?.uid
+                            ?
+                            <>
+                                <label htmlFor="my-drawer-2" className="btn btn-outline drawer-button lg:hidden">Dashboard </label>
+                                <div className="drawer  drawer-mobile">
+                                    <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                                    <div className="drawer-content  justify-center pt-12">
+                                        {/* <!-- Page content here --> */}
+                                        <Outlet />
+                                    </div>
+                                    <div className="drawer-side">
+                                        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                                        <ul className="menu p-4 overflow-y-auto w-80 bg-[#f2f7f5] text-base-content">
+                                            {/* <!-- Sidebar content here --> */}
+                                            <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
+                                            <li><NavLink to='/dashboard/my-booking' className='text-lg'>My Booking</NavLink></li>
+                                            <li><NavLink to='/dashboard/my-review' className='text-lg'>My Review</NavLink></li>
+                                            <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </>
+                            :
+                            <li>
+                                <NavLink to='/login' className='rounded-lg text-md font-bold pt-3 mb-5'>
+                                    Login
+                                </NavLink>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

@@ -141,9 +141,9 @@ const Login = () => {
                                     </label>
                                 </div>
                                 <label className="label pb-2">
-                                    <p onClick={forgetPassword} className="label-text-alt font-bold text-red-400 text-[15px] link link-hover">Forgot password?</p>
+                                    <p onClick={forgetPassword} className="label-text-alt text-red-400 text-[15px] link link-hover">Forgot password?</p>
                                 </label>
-                                <input className='btn btn-success w-full max-w-xs text-white' type="submit" value="Login" />
+                                <input className='btn btn-secondary w-full max-w-xs text-white' type="submit" value="Login" />
                             </form>
                             <p className='toggle-page py-2 '>
                                 New to Our Manufacture ?{" "}

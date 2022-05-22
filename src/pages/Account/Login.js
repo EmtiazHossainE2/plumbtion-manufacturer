@@ -46,7 +46,7 @@ const Login = () => {
     //login 
     const onSubmit = data => {
         console.log(data);
-        // signInWithEmailAndPassword(data.email, data.password)
+        signInWithEmailAndPassword(data.email, data.password)
     };
 
     // reset password 

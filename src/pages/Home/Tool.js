@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BsCartCheck } from 'react-icons/bs';
 
 const Tool = ({ tool }) => {
-    const { img, name, des, id, minOrder, available, price, ratings,diameter,thickness,length } = tool
+    const { img, name, des, _id, minOrder, available, price, ratings,diameter,thickness,length } = tool
     return (
         <div className="card lg:max-w-lg bg-base-100 ">
             <figure><img className='w-full' src={img} alt="serviceMan" /></figure>
@@ -20,7 +20,7 @@ const Tool = ({ tool }) => {
                     
                 </div>
                 <div className="card-actions pt-3 ">
-                    <Link to={'/tool/' + id} className='flex btn text-white btn-primary items-center'>
+                    <Link to={'/tool/' + _id} className='flex btn text-white btn-primary items-center'>
                         <p className='pr-3'> place order</p>
                         <span className='text-white text-lg'><BsCartCheck /></span>
                     </Link>

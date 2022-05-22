@@ -76,10 +76,13 @@ const Login = () => {
 
     return (
         <section>
-            <div className='flex h-[60vh] lg:h-[100vh] justify-center items-center '>
-                <div className="card w-96 bg-base-100 shadow-xl">
+            <div className='flex flex-col lg:flex-row py-8 lg:h-[100vh] items-center justify-evenly gap-12 '>
+                <div>
+                    <img className='lg:max-w-md' src="https://web.programming-hero.com/static/media/man-with-laptop.331dfa07.png" alt="login img" />
+                </div>
+                <div className="card  bg-base-100 shadow-xl">
                     <div className="card-body border-2 lg:border-none">
-                        <h2 className="text-center text-2xl">Log In</h2>
+                        <h2 className="text-center text-3xl">Log In</h2>
                         {signInError}
                         {gError}
                         <div>
@@ -153,7 +156,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </section>
     );
 };

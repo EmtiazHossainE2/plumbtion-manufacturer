@@ -20,8 +20,8 @@ const Dashboard = () => {
                     <ul className="menu p-4 overflow-y-auto w-80 bg-[#2e5789] text-white  space-y-4">
                         {/* <!-- Sidebar content here --> */}
                         <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
-                        <li><NavLink to='/dashboard/my-booking' className='text-lg'>My Booking</NavLink></li>
-                        <li><NavLink to='/dashboard/my-review' className='text-lg'>My Review</NavLink></li>
+                        <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
+                        <li><NavLink to='/dashboard/review' className='text-lg'>Review Here</NavLink></li>
                     </ul>
                 </div>
             </div>

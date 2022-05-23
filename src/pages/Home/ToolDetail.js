@@ -13,7 +13,7 @@ const ToolDetail = () => {
 
     const { data: detail, isLoading, refetch } = useQuery('detail', () => fetch(`http://localhost:5000/tool/${toolId}`).then(res => res.json()))
 
-
+    
 
     if (isLoading) {
         return <Loading />
@@ -36,13 +36,13 @@ const ToolDetail = () => {
         }
         if (orderQuantity > parseInt(detail?.available)) {
             Swal.fire({
-                text: `We don't have sufficient tool . Max order is ${detail?.available}`,
+                text: `We don't have sufficient Pipe . Max order is ${detail?.available}`,
                 icon: 'error',
                 confirmButtonText: 'Okay'
             })
             return
         }
-        else{
+        else {
             const purchaseInfo = {
                 userName: user?.displayName,
                 email: user?.email,
@@ -52,8 +52,6 @@ const ToolDetail = () => {
                 address: event.target.address.value,
                 phone: event.target.phone.value
             }
-    
-            
             if (purchaseInfo.address === '') {
                 Swal.fire({
                     text: "Provide Original Address",
@@ -70,12 +68,53 @@ const ToolDetail = () => {
                 })
                 return
             }
-            else{
-                console.log(purchaseInfo);
+            else {
+                // console.log(purchaseInfo);
+                fetch(`http://localhost:5000/order`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(purchaseInfo),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        Swal.fire({
+                            text: `Your are order ${orderQuantity} pice pipe. We will contact you soon`,
+                            icon: 'success',
+                            confirmButtonText: 'Thank you.'
+                        })
+                        const newAvailable = {
+                            available: parseInt(detail?.available) - orderQuantity,
+                        }
+                        const url = `http://localhost:5000/tool/${toolId}`
+
+                        fetch(url, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(newAvailable),
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                // console.log(data);
+                                refetch()
+
+                            })
+                            .catch((error) => {
+                                // console.error(error);
+                            });
+
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
             }
         }
 
-        
+
 
     }
 
@@ -114,7 +153,7 @@ const ToolDetail = () => {
                             <form onSubmit={handlePurchase} className='space-y-4 pt-8 '>
                                 <input type="text" disabled value={user?.displayName || ''} name='userName' className="input input-bordered w-full max-w-md text-lg" />
                                 <input type="email" disabled value={user?.email || ''} name='email' className="input input-bordered w-full max-w-md text-lg" />
-                                <input type="number" name='quantity' placeholder='Quantity' className="input input-bordered w-full max-w-md text-lg" required/>
+                                <input type="number" name='quantity' placeholder='Quantity' className="input input-bordered w-full max-w-md text-lg" required />
                                 <textarea rows={2} type="text" placeholder='Your Address' name='address' className=" input-bordered w-full textarea max-w-md text-lg " />
                                 <input type="number" placeholder="Phone Number" name='phone' className="input input-bordered w-full max-w-md text-lg" />
                                 <input type="submit" value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />

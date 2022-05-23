@@ -63,8 +63,8 @@ const Navbar = ({ children }) => {
                     className='dropdown-content bg-[#0b1623] text-white menu p-2 shadow space-y-2 w-52'
                 >
                     <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
-                    <li><NavLink to='/dashboard/my-booking' className='text-lg'>My Booking</NavLink></li>
-                    <li><NavLink to='/dashboard/my-review' className='text-lg'>My Review</NavLink></li>
+                    <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
+                    <li><NavLink to='/dashboard/review' className='text-lg'>Review Here</NavLink></li>
                     <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                 </ul>
             </li>
@@ -137,8 +137,8 @@ const Navbar = ({ children }) => {
                                         <ul className="menu p-4 overflow-y-auto w-80 bg-[#f2f7f5] text-base-content">
                                             {/* <!-- Sidebar content here --> */}
                                             <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
-                                            <li><NavLink to='/dashboard/my-booking' className='text-lg'>My Booking</NavLink></li>
-                                            <li><NavLink to='/dashboard/my-review' className='text-lg'>My Review</NavLink></li>
+                                            <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
+                                            <li><NavLink to='/dashboard/review' className='text-lg'>Review Here</NavLink></li>
                                             <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                                         </ul>
                                     </div>

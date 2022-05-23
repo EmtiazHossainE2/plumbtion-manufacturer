@@ -4,6 +4,7 @@ import Tool from './Tool';
 
 const Tools = () => {
     const [tools] = useTools()
+    const pipes = [...tools].reverse().slice(0,3)
     return (
         <div className='lg:px-12 bg-slate-100 pt-20 pb-8'>
             <div className='text-center space-y-4'>
@@ -14,7 +15,7 @@ const Tools = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8 my-12 px-4'>
                 {
-                    tools.map(tool => <Tool
+                    pipes.map(tool => <Tool
                         key={tool._id}
                         tool={tool}
                     ></Tool>)

@@ -13,7 +13,7 @@ const ToolDetail = () => {
 
     const { data: detail, isLoading, refetch } = useQuery('detail', () => fetch(`http://localhost:5000/tool/${toolId}`).then(res => res.json()))
 
-    
+
 
     if (isLoading) {
         return <Loading />
@@ -138,7 +138,9 @@ const ToolDetail = () => {
                             </div>
                             <h4 className='text-xl font-bold'>Price : ${detail?.price}<small>/p</small></h4>
                             <div className="flex flex-col lg:flex-row gap-5">
-                                <p className='text-xl '>Available  : <span className='text-green-500 font-bold'>{detail?.available}</span></p>
+                                <p className='text-xl '>Available  : <span className='text-green-500 font-bold'>
+                                {detail?.available === 0 ?  "Out of Stock" : detail?.available}
+                                </span></p>
                                 <p className='text-xl '>Min Order Quantity  : <span className='text-green-500 font-bold'>{detail?.minOrder}</span></p>
                             </div>
                             <p className='text-slate-500'><span className='font-bold text-lg'>Description :</span> {detail?.des}</p>
@@ -156,7 +158,8 @@ const ToolDetail = () => {
                                 <input type="number" name='quantity' placeholder='Quantity' className="input input-bordered w-full max-w-md text-lg" required />
                                 <textarea rows={2} type="text" placeholder='Your Address' name='address' className=" input-bordered w-full textarea max-w-md text-lg " />
                                 <input type="number" placeholder="Phone Number" name='phone' className="input input-bordered w-full max-w-md text-lg" />
-                                <input type="submit" value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />
+                                
+                                <input type="submit" disabled={detail?.available < detail?.minOrder   } value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />
                             </form>
                         </div>
                         <div className='flex-1 '>

@@ -64,7 +64,7 @@ const Navbar = ({ children }) => {
                 >
                     <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
                     <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                    <li><NavLink to='/dashboard/review' className='text-lg'>Review Here</NavLink></li>
+                    <li><NavLink to='/dashboard/review-here' className='text-lg'>Review Here</NavLink></li>
                     <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                 </ul>
             </li>
@@ -138,7 +138,7 @@ const Navbar = ({ children }) => {
                                             {/* <!-- Sidebar content here --> */}
                                             <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
                                             <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                                            <li><NavLink to='/dashboard/review' className='text-lg'>Review Here</NavLink></li>
+                                            <li><NavLink to='/dashboard/review-here' className='text-lg'>Review Here</NavLink></li>
                                             <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                                         </ul>
                                     </div>

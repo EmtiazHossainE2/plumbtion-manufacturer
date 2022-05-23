@@ -21,7 +21,7 @@ const Dashboard = () => {
                         {/* <!-- Sidebar content here --> */}
                         <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
                         <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                        <li><NavLink to='/dashboard/review' className='text-lg'>Review Here</NavLink></li>
+                        <li><NavLink to='/dashboard/review-here' className='text-lg'>Review Here</NavLink></li>
                     </ul>
                 </div>
             </div>

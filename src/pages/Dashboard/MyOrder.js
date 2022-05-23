@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import Loading from '../../components/Loading';
 import auth from '../../Firebase/firebase.init';
+import Order from './Order';
 
 const MyOrder = () => {
-    const [myOrders, setMyOrders] = useState([])
     const [user] = useAuthState(auth)
-    const navigate = useNavigate()
-    useEffect(() => {
-        if (user) {
-            fetch(`http://localhost:5000/order?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => setMyOrders(data));
-        }
-    }, [user])
 
+    const { data: myOrders, isLoading, error, refetch } = useQuery('order', () => fetch(`http://localhost:5000/order?email=${user.email}`)
+        .then(res => res.json()))
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+    // console.log(myOrders);
 
     return (
         <div>
@@ -30,19 +31,17 @@ const MyOrder = () => {
                                 <th>Order Quantity</th>
                                 <th>Total Price</th>
                                 <th>Payment</th>
+                                <th>Cancel order</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                myOrders.map((order, index) =>
-                                    <tr key={index}>
-                                        <th>{index + 1}</th>
-                                        <td>{order.pipeName}</td>
-                                        <td>{order.address}</td>
-                                        <td>{order.orderQuantity}</td>
-                                        <td>${order.totalPrice}</td>
-                                        <td><button className='btn btn-warning btn-xs'>Pay</button></td>
-                                    </tr>)
+                                myOrders.map((order, index) => <Order
+                                key={index}
+                                index={index}
+                                order={order}
+                                refetch={refetch}
+                                ></Order>)
                             }
                         </tbody>
                     </table>

@@ -6,10 +6,12 @@ import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
 import Loading from '../../components/Loading';
 import auth from '../../Firebase/firebase.init';
+import useCheckAdmin from '../../hooks/useCheckAdmin';
 
 const ToolDetail = () => {
     const { toolId } = useParams()
     const [user] = useAuthState(auth)
+    const[admin] = useCheckAdmin(user)
 
     const { data: detail, isLoading, refetch } = useQuery('detail', () => fetch(`http://localhost:5000/tool/${toolId}`).then(res => res.json()))
 
@@ -26,93 +28,105 @@ const ToolDetail = () => {
         const orderQuantity = parseInt(event.target.quantity.value)
         const totalPrice = parseInt(orderQuantity) * parseInt(detail?.price)
 
-        if (orderQuantity < parseInt(detail?.minOrder)) {
+        if(admin){
             Swal.fire({
-                text: `Min Order is ${detail?.minOrder} pice`,
+                text: `Sorry ! You are unable to Order .`,
                 icon: 'error',
                 confirmButtonText: 'Okay'
             })
             return
         }
-        if (orderQuantity > parseInt(detail?.available)) {
-            Swal.fire({
-                text: `We don't have sufficient Pipe . Max order is ${detail?.available}`,
-                icon: 'error',
-                confirmButtonText: 'Okay'
-            })
-            return
-        }
-        else {
-            const purchaseInfo = {
-                userName: user?.displayName,
-                email: user?.email,
-                pipeName: detail?.name,
-                totalPrice,
-                orderQuantity,
-                address: event.target.address.value,
-                phone: event.target.phone.value
-            }
-            if (purchaseInfo.address === '') {
+        else{
+            if (orderQuantity < parseInt(detail?.minOrder)) {
                 Swal.fire({
-                    text: "Provide Original Address",
+                    text: `Min Order is ${detail?.minOrder} pice`,
                     icon: 'error',
                     confirmButtonText: 'Okay'
                 })
                 return
             }
-            if (purchaseInfo.phone === '') {
+            if (orderQuantity > parseInt(detail?.available)) {
                 Swal.fire({
-                    text: 'Provide Phone Number',
+                    text: `We don't have sufficient Pipe . Max order is ${detail?.available}`,
                     icon: 'error',
                     confirmButtonText: 'Okay'
                 })
                 return
             }
             else {
-                // console.log(purchaseInfo);
-                fetch(`http://localhost:5000/order`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(purchaseInfo),
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Success:', data);
-                        Swal.fire({
-                            text: `Your are order ${orderQuantity} pice pipe. We will contact you soon`,
-                            icon: 'success',
-                            confirmButtonText: 'Thank you.'
-                        })
-                        const newAvailable = {
-                            available: parseInt(detail?.available) - orderQuantity,
-                        }
-                        const url = `http://localhost:5000/tool/${toolId}`
-
-                        fetch(url, {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(newAvailable),
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                // console.log(data);
-                                refetch()
-
-                            })
-                            .catch((error) => {
-                                // console.error(error);
-                            });
-
+                const purchaseInfo = {
+                    userName: user?.displayName,
+                    email: user?.email,
+                    pipeName: detail?.name,
+                    totalPrice,
+                    orderQuantity,
+                    address: event.target.address.value,
+                    phone: event.target.phone.value
+                }
+                if (purchaseInfo.address === '') {
+                    Swal.fire({
+                        text: "Provide Original Address",
+                        icon: 'error',
+                        confirmButtonText: 'Okay'
                     })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
+                    return
+                }
+                if (purchaseInfo.phone === '') {
+                    Swal.fire({
+                        text: 'Provide Phone Number',
+                        icon: 'error',
+                        confirmButtonText: 'Okay'
+                    })
+                    return
+                }
+                else {
+                    // console.log(purchaseInfo);
+                    fetch(`http://localhost:5000/order`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(purchaseInfo),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                            Swal.fire({
+                                text: `Your are order ${orderQuantity} pice pipe. We will contact you soon`,
+                                icon: 'success',
+                                confirmButtonText: 'Thank you.'
+                            })
+                            const newAvailable = {
+                                available: parseInt(detail?.available) - orderQuantity,
+                            }
+                            const url = `http://localhost:5000/tool/${toolId}`
+    
+                            fetch(url, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(newAvailable),
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    // console.log(data);
+                                    refetch()
+    
+                                })
+                                .catch((error) => {
+                                    // console.error(error);
+                                });
+    
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
             }
         }
+
+        
 
 
 

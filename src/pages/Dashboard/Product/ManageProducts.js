@@ -1,9 +1,72 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import Loading from '../../../components/Loading';
+import auth from '../../../Firebase/firebase.init';
+import ProductRow from './ProductRow';
 
 const ManageProducts = () => {
+    const navigate = useNavigate()
+
+    const { data: products, isLoading, error, refetch } = useQuery('product', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/tool`, {
+        method: 'GET',
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        },
+    })
+        .then(res => {
+            // console.log('res', res);
+            if (res.status === 401 || res.status === 403) {
+                signOut(auth)
+                localStorage.removeItem('accessToken')
+                Swal.fire({
+                    text: 'Session expired sign in again . .',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                })
+                navigate('/login')
+            }
+            return res.json()
+        }))
+
+    if (isLoading) {
+        return <Loading />
+    }
+
+    // console.log(myOrders);
+
     return (
         <div>
-            <h2>Manage products</h2>
+            <h2 className='md:p-4 text-xl'>Manage All Products {products.length}</h2>
+            <div className='md:p-4'>
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Image</th>
+                                <th>Pipe Name</th>
+                                <th>Available</th>
+                                <th>Min Order Quantity</th>
+                                <th> Price</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                products.map((product, index) => <ProductRow
+                                    key={index}
+                                    index={index}
+                                    product={product}
+                                    refetch={refetch}
+                                ></ProductRow>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 };

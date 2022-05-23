@@ -28,7 +28,7 @@ const ReviewSection = () => {
     const numberSix = displayReviews[5]
 
     return (
-        <section className="bg-[#F5F7FF] py-16 lg:px-12">
+        <section className="bg-[#F5F7FF] py-16 lg:px-12" id='review'>
             <div>
                 <h2 className='text-center text-4xl font-bold  pb-8 pt-5'>People About Plumbtion </h2>
                 <p className='text-lg px-5 lg:px-28 mb-12'>We have decades of experience meeting the stringent regulations and certifications for the automotive, aerospace and medical device industries, which serve as benchmarks for all of the products we manufacture.</p>

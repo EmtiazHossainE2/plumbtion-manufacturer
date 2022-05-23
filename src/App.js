@@ -29,6 +29,7 @@ const App = () => {
                 <ScrollToTop>
                     <Routes >
                         <Route path='/' element={<Home />}></Route>
+                        <Route path='/home' element={<Home />}></Route>
                         <Route path='/tool/:toolId' element={
                             <RequireAuth><ToolDetail /></RequireAuth>
                         }></Route>

@@ -2,9 +2,11 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink, Outlet } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
+import useCheckAdmin from '../../hooks/useCheckAdmin';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth)
+    const [admin] = useCheckAdmin(user)
 
     return (
         <div>
@@ -20,12 +22,20 @@ const Dashboard = () => {
                     <ul className="menu p-4 overflow-y-auto w-80 bg-[#2e5789] text-white  space-y-4">
                         {/* <!-- Sidebar content here --> */}
                         <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
-                        <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                        <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
-                        <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
-                        <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
-                        <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
-                        <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                        {admin ? "" :
+                            <>
+                                <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
+                                <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
+
+                            </>}
+                        {admin &&
+                            <>
+                                <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
+                                <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
+                                <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
+                                <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                            </>
+                        }
                     </ul>
                 </div>
             </div>

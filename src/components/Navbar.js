@@ -6,10 +6,12 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo1.png'
 import auth from '../Firebase/firebase.init';
 import demoProfile from '../assets/images/demoProfile.png'
+import useCheckAdmin from '../hooks/useCheckAdmin';
 
 const Navbar = ({ children }) => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth)
+    const [admin] = useCheckAdmin(user)
 
     const logOut = () => {
         signOut(auth)
@@ -64,12 +66,20 @@ const Navbar = ({ children }) => {
                     className='dropdown-content bg-[#0b1623] text-white menu p-2 shadow space-y-2 w-52'
                 >
                     <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
-                    <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                    <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
-                    <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
-                    <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
-                    <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
-                    <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                    {admin ? "" :
+                        <>
+                            <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
+                            <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
+
+                        </>}
+                    {admin &&
+                        <>
+                            <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
+                            <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
+                            <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
+                            <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                        </>
+                    }
                     <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                 </ul>
             </li>
@@ -142,12 +152,20 @@ const Navbar = ({ children }) => {
                                         <ul className="menu p-4 overflow-y-auto w-80 bg-[#f2f7f5] text-base-content">
                                             {/* <!-- Sidebar content here --> */}
                                             <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
-                                            <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                                            <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
-                                            <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
-                                            <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
-                                            <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
-                                            <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                                            {admin ? "" :
+                                                <>
+                                                    <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
+                                                    <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
+
+                                                </>}
+                                            {admin &&
+                                                <>
+                                                    <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
+                                                    <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
+                                                    <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
+                                                    <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                                                </>
+                                            }
                                             <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                                         </ul>
                                     </div>

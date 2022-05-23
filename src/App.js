@@ -24,7 +24,7 @@ import RequireAdmin from './pages/Account/RequireAdmin';
 
 const App = () => {
     return (
-        <div>
+        <div className='scroll-smooth'>
             <Navbar>
                 <ScrollToTop>
                     <Routes >

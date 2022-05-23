@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import Loading from '../../components/Loading';
-import auth from '../../Firebase/firebase.init';
+import Loading from '../../../components/Loading';
+import auth from '../../../Firebase/firebase.init';
 import Order from './Order';
 
 const MyOrder = () => {

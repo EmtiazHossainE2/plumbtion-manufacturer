@@ -13,9 +13,9 @@ import NotFound from './components/NotFound';
 import RequireAuth from './pages/Account/RequireAuth';
 import ToolDetail from './pages/Home/ToolDetail';
 import Dashboard from './pages/Dashboard/Dashboard';
-import MyProfile from './pages/Dashboard/MyProfile';
-import MyOrder from './pages/Dashboard/MyOrder';
-import ReviewHere from './pages/Dashboard/ReviewHere';
+import MyProfile from './pages/Dashboard/Profile/MyProfile';
+import MyOrder from './pages/Dashboard/Order/MyOrder';
+import ReviewHere from './pages/Dashboard/Review/ReviewHere';
 
 const App = () => {
     return (

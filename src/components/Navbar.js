@@ -14,6 +14,7 @@ const Navbar = ({ children }) => {
     const logOut = () => {
         signOut(auth)
         navigate('/login');
+        localStorage.removeItem('accessToken')
     }
     const menuItems = <>
         <li>

@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
 import Loading from '../../components/Loading';
 import auth from '../../Firebase/firebase.init';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -14,18 +15,18 @@ const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(auth);
 
-
+    const [token] = useToken(user || googleUser)
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
     //user
     useEffect(() => {
-        if (user || googleUser) {
+        if (token) {
             navigate(from, { replace: true });
             toast.success(`Welcome to Plumbtion Manufacture `, { id: 'success' })
         }
-    }, [user, googleUser, from, navigate])
+    }, [token, from, navigate])
 
     //loading
     if (loading || googleLoading || sending) {

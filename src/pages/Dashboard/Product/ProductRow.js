@@ -6,7 +6,7 @@ const ProductRow = ({ product, index, refetch }) => {
     // console.log(product);
 
     const handleDelete = () => {
-        const url = `http://localhost:5000/tool/${_id}`;
+        const url = `https://plumbtion-manufacturer.herokuapp.com/tool/${_id}`;
         Swal.fire({
             text: `Are you sure to cancel  ?`,
             icon: "warning",

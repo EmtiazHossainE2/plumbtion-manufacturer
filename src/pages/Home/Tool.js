@@ -6,7 +6,7 @@ const Tool = ({ tool }) => {
     const { img, name, des, _id, minOrder, available, price, ratings } = tool
     return (
         <div className="card lg:max-w-lg bg-base-100 ">
-            <figure><img className='w-full' src={img} alt="serviceMan" /></figure>
+            <figure><img className='w-full' src={img} alt="Pipes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name.slice(0, 20)}</h2>
                 <p className='pb-2'>{des.slice(0, 100) + '...'}</p>

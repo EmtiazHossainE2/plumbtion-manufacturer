@@ -33,11 +33,11 @@ const AddProduct = () => {
                         diameter: data.diameter,
                         thickness: data.thickness,
                         length: data.length,
-                        img: img ,
+                        img: img,
                         des: data.des,
                     }
                     console.log(pipeInfo);
-                    fetch('http://localhost:5000/tool', {
+                    fetch('https://plumbtion-manufacturer.herokuapp.com/tool', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -71,7 +71,7 @@ const AddProduct = () => {
 
 
     return (
-        <div className='bg-[#e4e6ed] py-12'>
+        <div className='bg-[#e4e6ed] pt-5 pb-12'>
             <div className="mx-5">
                 <div className="card  bg-base-100 shadow-xl">
                     <div className="card-body text-center">

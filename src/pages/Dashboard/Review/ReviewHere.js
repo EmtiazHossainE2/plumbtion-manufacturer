@@ -19,7 +19,7 @@ const ReviewHere = () => {
             img: user?.photoURL,
             country: event.target.country.value
         }
-        fetch(`http://localhost:5000/review`, {
+        fetch(`https://plumbtion-manufacturer.herokuapp.com/review`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

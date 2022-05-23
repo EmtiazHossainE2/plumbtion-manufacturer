@@ -7,7 +7,7 @@ const UserList = ({ user, index, refetch }) => {
     const { email, role } = user
 
     const makeAdmin = () => {
-        const url = `http://localhost:5000/user/admin/${email}`
+        const url = `https://plumbtion-manufacturer.herokuapp.com/user/admin/${email}`
         Swal.fire({
             text: "Are you sure to make admin ?",
             icon: "warning",
@@ -48,7 +48,7 @@ const UserList = ({ user, index, refetch }) => {
 
     }
     const makeUser = () => {
-        const url = `http://localhost:5000/user/user/${email}`
+        const url = `https://plumbtion-manufacturer.herokuapp.com/user/user/${email}`
         Swal.fire({
             text: "Are you sure to remove admin ?",
             icon: "warning",
@@ -90,7 +90,7 @@ const UserList = ({ user, index, refetch }) => {
     }
 
     const handleDelete = () => {
-        const url = `http://localhost:5000/user/${email}`;
+        const url = `https://plumbtion-manufacturer.herokuapp.com/user/${email}`;
         Swal.fire({
             text: `Are you sure to delete  ?`,
             icon: "warning",
@@ -144,14 +144,14 @@ const UserList = ({ user, index, refetch }) => {
             <td>{email}</td>
             <td>
 
-                {role==='admin' ?
+                {role === 'admin' ?
                     <div className='text-lg text-green-500 font-bold'>Admin</div>
                     :
                     <div className='text-md'>user</div>
                 }
             </td>
             <td>
-                {role==='admin' ?
+                {role === 'admin' ?
                     <>
                         <button onClick={makeUser} className='btn btn-xs'>Remove Admin</button>
                     </>

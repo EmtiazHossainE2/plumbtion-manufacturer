@@ -1,11 +1,11 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 
-const Order = ({ order, index,refetch }) => {
-    const { email} = order
+const Order = ({ order, index, refetch }) => {
+    const { email } = order
 
     const handleCancel = () => {
-        const url = `http://localhost:5000/order/${email}`;
+        const url = `https://plumbtion-manufacturer.herokuapp.com/order/${email}`;
         Swal.fire({
             text: `Are you sure to cancel  ?`,
             icon: "warning",
@@ -35,7 +35,7 @@ const Order = ({ order, index,refetch }) => {
         })
 
     }
-    
+
     return (
         <tr >
             <th>{index + 1}</th>

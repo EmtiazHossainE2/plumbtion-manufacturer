@@ -11,9 +11,9 @@ import useCheckAdmin from '../../hooks/useCheckAdmin';
 const ToolDetail = () => {
     const { toolId } = useParams()
     const [user] = useAuthState(auth)
-    const[admin] = useCheckAdmin(user)
+    const [admin] = useCheckAdmin(user)
 
-    const { data: detail, isLoading, refetch } = useQuery('detail', () => fetch(`http://localhost:5000/tool/${toolId}`).then(res => res.json()))
+    const { data: detail, isLoading, refetch } = useQuery('detail', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/tool/${toolId}`).then(res => res.json()))
 
 
 
@@ -28,7 +28,7 @@ const ToolDetail = () => {
         const orderQuantity = parseInt(event.target.quantity.value)
         const totalPrice = parseInt(orderQuantity) * parseInt(detail?.price)
 
-        if(admin){
+        if (admin) {
             Swal.fire({
                 text: `Sorry ! You are unable to Order .`,
                 icon: 'error',
@@ -36,7 +36,7 @@ const ToolDetail = () => {
             })
             return
         }
-        else{
+        else {
             if (orderQuantity < parseInt(detail?.minOrder)) {
                 Swal.fire({
                     text: `Min Order is ${detail?.minOrder} pice`,
@@ -81,7 +81,7 @@ const ToolDetail = () => {
                 }
                 else {
                     // console.log(purchaseInfo);
-                    fetch(`http://localhost:5000/order`, {
+                    fetch(`https://plumbtion-manufacturer.herokuapp.com/order`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -99,8 +99,8 @@ const ToolDetail = () => {
                             const newAvailable = {
                                 available: parseInt(detail?.available) - orderQuantity,
                             }
-                            const url = `http://localhost:5000/tool/${toolId}`
-    
+                            const url = `https://plumbtion-manufacturer.herokuapp.com/tool/${toolId}`
+
                             fetch(url, {
                                 method: 'PUT',
                                 headers: {
@@ -112,12 +112,12 @@ const ToolDetail = () => {
                                 .then(data => {
                                     // console.log(data);
                                     refetch()
-    
+
                                 })
                                 .catch((error) => {
                                     // console.error(error);
                                 });
-    
+
                         })
                         .catch((error) => {
                             console.error('Error:', error);
@@ -126,7 +126,7 @@ const ToolDetail = () => {
             }
         }
 
-        
+
 
 
 
@@ -153,7 +153,7 @@ const ToolDetail = () => {
                             <h4 className='text-xl font-bold'>Price : ${detail?.price}<small>/p</small></h4>
                             <div className="flex flex-col lg:flex-row gap-5">
                                 <p className='text-xl '>Available  : <span className='text-green-500 font-bold'>
-                                {detail?.available === 0 ?  "Out of Stock" : detail?.available}
+                                    {detail?.available === 0 ? "Out of Stock" : detail?.available}
                                 </span></p>
                                 <p className='text-xl '>Min Order Quantity  : <span className='text-green-500 font-bold'>{detail?.minOrder}</span></p>
                             </div>
@@ -169,11 +169,11 @@ const ToolDetail = () => {
                             <form onSubmit={handlePurchase} className='space-y-4 pt-8 '>
                                 <input type="text" disabled value={user?.displayName || ''} name='userName' className="input input-bordered w-full max-w-md text-lg" />
                                 <input type="email" disabled value={user?.email || ''} name='email' className="input input-bordered w-full max-w-md text-lg" />
-                                <input type="number" name='quantity' placeholder='Quantity' className="input input-bordered w-full max-w-md text-lg" required />
+                                <input type="number" name='quantity' placeholder={`Min Order ${detail?.minOrder}`} className="input input-bordered w-full max-w-md text-lg" required />
                                 <textarea rows={2} type="text" placeholder='Your Address' name='address' className=" input-bordered w-full textarea max-w-md text-lg " />
                                 <input type="number" placeholder="Phone Number" name='phone' className="input input-bordered w-full max-w-md text-lg" />
-                                
-                                <input type="submit" disabled={detail?.available < detail?.minOrder   } value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />
+
+                                <input type="submit" disabled={detail?.available < detail?.minOrder} value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />
                             </form>
                         </div>
                         <div className='flex-1 '>

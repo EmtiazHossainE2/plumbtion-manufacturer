@@ -17,7 +17,7 @@ const useToken = user => {
             lastLogin
         }
         if (email) {
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://plumbtion-manufacturer.herokuapp.com/user/${email}`, {
                 method: "PUT",
                 headers: {
                     "content-type": 'application/json'

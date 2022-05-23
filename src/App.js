@@ -16,6 +16,11 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import MyProfile from './pages/Dashboard/Profile/MyProfile';
 import MyOrder from './pages/Dashboard/Order/MyOrder';
 import ReviewHere from './pages/Dashboard/Review/ReviewHere';
+import AllUsers from './pages/Dashboard/Users/AllUsers';
+import AddProduct from './pages/Dashboard/Product/AddProduct';
+import ManageOrders from './pages/Dashboard/Order/ManageOrders';
+import ManageProducts from './pages/Dashboard/Product/ManageProducts';
+import RequireAdmin from './pages/Account/RequireAdmin';
 
 const App = () => {
     return (
@@ -38,8 +43,25 @@ const App = () => {
                         <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
                             <Route path='my-profile' element={<MyProfile />}></Route>
                             <Route path='my-order' element={<MyOrder />}></Route>
-                            <Route path='review-here' element={<ReviewHere />}></Route>
-                            
+                            <Route path='add-review' element={<ReviewHere />}></Route>
+
+                            {/* admin */}
+
+                            <Route path='users' element={<RequireAdmin>
+                                <AllUsers />
+                            </RequireAdmin>}></Route>
+                            <Route path='add-product' element={<RequireAdmin>
+                                <AddProduct />
+                            </RequireAdmin>}></Route>
+                            <Route path='manage-order' element={<RequireAdmin>
+                                <ManageOrders />
+                            </RequireAdmin>}></Route>
+                            <Route path='manage-product' element={<RequireAdmin>
+                                <ManageProducts />
+                            </RequireAdmin>}></Route>
+
+                            {/* admin */}
+
                         </Route>
 
 

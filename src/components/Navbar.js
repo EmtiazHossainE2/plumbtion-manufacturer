@@ -65,7 +65,11 @@ const Navbar = ({ children }) => {
                 >
                     <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
                     <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                    <li><NavLink to='/dashboard/review-here' className='text-lg'>Review Here</NavLink></li>
+                    <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
+                    <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
+                    <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
+                    <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
+                    <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
                     <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                 </ul>
             </li>
@@ -139,7 +143,11 @@ const Navbar = ({ children }) => {
                                             {/* <!-- Sidebar content here --> */}
                                             <li><NavLink to='/dashboard/my-profile' className='text-lg'>Profile</NavLink></li>
                                             <li><NavLink to='/dashboard/my-order' className='text-lg'>My Order</NavLink></li>
-                                            <li><NavLink to='/dashboard/review-here' className='text-lg'>Review Here</NavLink></li>
+                                            <li><NavLink to='/dashboard/add-review' className='text-lg'>Add a Review</NavLink></li>
+                                            <li><NavLink to='/dashboard/users' className='text-lg'>All User</NavLink></li>
+                                            <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
+                                            <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
+                                            <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
                                             <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
                                         </ul>
                                     </div>

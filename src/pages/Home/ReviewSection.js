@@ -18,14 +18,8 @@ const ReviewSection = () => {
             .then(data => setReviews(data))
     }, [])
 
-    const displayReviews = [...reviews].reverse().slice(0, 6)
+    const displayReviews = [...reviews].reverse()
     // console.log(displayReviews);
-    const numberOne = displayReviews[0]
-    const numberTwo = displayReviews[1]
-    const numberThree = displayReviews[2]
-    const numberFour = displayReviews[3]
-    const numberFive = displayReviews[4]
-    const numberSix = displayReviews[5]
 
     return (
         <section className="bg-[#F5F7FF] py-16 lg:px-12" id='review'>
@@ -55,162 +49,37 @@ const ReviewSection = () => {
                 modules={[FreeMode, Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center cursor-pointer">
-                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 min-h-[0vh]">
-                            <div className="card-body ">
-                                <h2 className="card-title capitalize">{numberOne?.title}</h2>
-                                <div>
-                                    {numberOne?.rating && <Ratings ratings={numberOne?.rating} ></Ratings>}
-                                </div>
-                                <p> {numberOne?.des}</p>
-                                <div className='flex gap-5 pt-5'>
-                                    <div className="avatar">
-                                        <div className="w-20 rounded-full">
-                                            <img src={numberOne?.img} alt='man1' />
+                {displayReviews.map((r, index) =>
+                    <SwiperSlide key={index} className='pb-5'>
+                        <div className="flex items-center justify-center cursor-pointer">
+                            <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 min-h-[45vh] lg:min-h-[50vh]">
+                                <div className="card-body ">
+                                    <div className='flex gap-5 '>
+                                        <div className="avatar">
+                                            <div className="w-20 rounded-full">
+                                                <img src={r?.img} alt='man1' />
+                                            </div>
+                                        </div>
+                                        <div className='flex items-center justify-center'>
+                                            <div>
+                                                <h4 className='text-lg font-bold'>{r?.name}</h4>
+                                                <p className='text-md'>{r?.country}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div>
-                                            <h4 className='text-lg font-bold'>{numberOne?.name}</h4>
-                                            <p className='text-md'>{numberOne?.country}</p>
-                                        </div>
+                                    <div>
+                                        {r?.rating && <Ratings ratings={r?.rating} ></Ratings>}
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center cursor-pointer">
-                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
-                            <div className="card-body ">
-                                <h2 className="card-title capitalize">{numberTwo?.title}</h2>
-                                <div>
-                                    {numberTwo?.rating && <Ratings ratings={numberTwo?.rating} ></Ratings>}
-                                </div>
-                                <p> {numberTwo?.des}</p>
-                                <div className='flex gap-5 pt-5'>
-                                    <div className="avatar">
-                                        <div className="w-20 rounded-full">
-                                            <img src={numberTwo?.img} alt='man1' />
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div>
-                                            <h4 className='text-lg font-bold'>{numberTwo?.name}</h4>
-                                            <p className='text-md'>{numberTwo?.country}</p>
-                                        </div>
-                                    </div>
+                                    <h2 className="card-title capitalize">{r?.title}</h2>
+
+                                    <p> {r?.des.slice(0,240) }</p>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center cursor-pointer">
-                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
-                            <div className="card-body ">
-                                <h2 className="card-title capitalize">{numberThree?.title}</h2>
-                                <div>
-                                    {numberThree?.rating && <Ratings ratings={numberThree?.rating} ></Ratings>}
-                                </div>
-                                <p> {numberThree?.des.slice(0, 180) + '...'}</p>
-                                <div className='flex gap-5 pt-5'>
-                                    <div className="avatar">
-                                        <div className="w-20 rounded-full">
-                                            <img src={numberThree?.img} alt='man1' />
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div>
-                                            <h4 className='text-lg font-bold'>{numberThree?.name}</h4>
-                                            <p className='text-md'>{numberThree?.country}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center cursor-pointer">
-                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
-                            <div className="card-body ">
-                                <h2 className="card-title capitalize">{numberFour?.title}</h2>
-                                <div>
-                                    {numberFour?.rating && <Ratings ratings={numberFour?.rating} ></Ratings>}
-                                </div>
-                                <p> {numberFour?.des.slice(0, 180) + '...'}</p>
-                                <div className='flex gap-5 pt-5'>
-                                    <div className="avatar">
-                                        <div className="w-20 rounded-full">
-                                            <img src={numberFour?.img} alt='man1' />
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div>
-                                            <h4 className='text-lg font-bold'>{numberFour?.name}</h4>
-                                            <p className='text-md'>{numberFour?.country}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center cursor-pointer">
-                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
-                            <div className="card-body ">
-                                <h2 className="card-title capitalize">{numberFive?.title}</h2>
-                                <div>
-                                    {numberFive?.rating && <Ratings ratings={numberFive?.rating} ></Ratings>}
-                                </div>
-                                <p> {numberFive?.des.slice(0, 180) + '...'}</p>
-                                <div className='flex gap-5 pt-5'>
-                                    <div className="avatar">
-                                        <div className="w-20 rounded-full">
-                                            <img src={numberFive?.img} alt='man1' />
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div>
-                                            <h4 className='text-lg font-bold'>{numberFive?.name}</h4>
-                                            <p className='text-md'>{numberFive?.country}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide className='pb-5'>
-                    <div className="flex items-center justify-center cursor-pointer">
-                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
-                            <div className="card-body ">
-                                <h2 className="card-title capitalize">{numberSix?.title}</h2>
-                                <div>
-                                    {numberSix?.rating && <Ratings ratings={numberSix?.rating} ></Ratings>}
-                                </div>
-                                <p> {numberSix?.des.slice(0, 180) + '...'}</p>
-                                <div className='flex gap-5 pt-5'>
-                                    <div className="avatar">
-                                        <div className="w-20 rounded-full">
-                                            <img src={numberSix?.img} alt='man1' />
-                                        </div>
-                                    </div>
-                                    <div className='flex items-center justify-center'>
-                                        <div>
-                                            <h4 className='text-lg font-bold'>{numberSix?.name}</h4>
-                                            <p className='text-md'>{numberSix?.country}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </SwiperSlide>
+                    </SwiperSlide>
+                )}
+
             </Swiper >
         </section >
     );

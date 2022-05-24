@@ -56,7 +56,7 @@ const ReviewHere = () => {
                             <input type="text" name='title' placeholder='Add title' className="input input-bordered w-full max-w-md text-lg" required />
                             <input type="number" placeholder='Rating' name='rating' min='1' max='5' className="input input-bordered w-full max-w-md text-lg" required />
                             <input type="text" placeholder="Your Country" name='country' className="input input-bordered w-full max-w-md text-lg" required />
-                            <textarea rows={2} type="text" placeholder='Your Review Text' name='des' className=" input-bordered w-full textarea max-w-md text-lg " required />
+                            <textarea rows={2}  type="text" placeholder='Your Review Text (max 250)' name='des' className=" input-bordered w-full textarea max-w-md text-lg " required />
                             <input type="submit" value="Review" className="btn btn-secondary text-white w-full max-w-md text-lg" />
                         </form>
                     </div>

@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import demoProfile from '../../../assets/images/demoProfile.png'
 import { BiEditAlt } from 'react-icons/bi';
+import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-icons/ai';
+
 
 
 const MyProfile = () => {
@@ -107,8 +109,60 @@ const MyProfile = () => {
                         </div>
                     </div>
                     <hr />
-                    <div>
-                        <h2>Additional Information </h2>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 lg:px-8 py-4 gap-5">
+                        <div className='space-y-3'>
+                            <h2 className='py-3 text-lg font-bold'>Additional Information </h2>
+                            <div className='flex space-x-4'>
+                                <h4 className='text-lg'>Location : </h4>
+                                <div>
+                                    {myProfile?.location ?
+                                        <>
+                                            <p className='capitalize'> {myProfile?.location}</p>
+                                        </>
+                                        :
+                                        <p className=''> Update please</p>
+                                    }
+                                </div>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <h4 className='text-lg'>Address : </h4>
+                                <div>
+                                    {myProfile?.address ?
+                                        <>
+                                            <p className='capitalize'> {myProfile?.address}</p>
+                                        </>
+                                        :
+                                        <p className=''> Update please </p>
+                                    }
+                                </div>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <h4 className='text-lg'>Education  : </h4>
+                                <div>
+                                    {myProfile?.education ?
+                                        <>
+                                            <p className='capitalize'> {myProfile?.education}</p>
+                                        </>
+                                        :
+                                        <p className=''> Update please</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div className='space-y-4 '>
+                            <h2 className='text-lg font-bold pt-5 lg:pt-0'>Social Link </h2>
+                            <a href={myProfile?.linkedin} target="_blank" rel="noopener noreferrer" className='flex gap-4 text-lg hover:text-[#067aee]'>
+                                <span className='text-3xl text-[#094f94]'><AiOutlineLinkedin /></span>
+                                Linkedin</a>
+
+                            <a href={myProfile?.github} target="_blank" rel="noopener noreferrer" className='flex gap-4 text-lg hover:text-[#2a8ad8]'>
+                                <span className='text-3xl text-[#0c0e10]'><AiOutlineGithub /></span>
+                                Github</a>
+                            <a href={myProfile?.facebook} target="_blank" rel="noopener noreferrer" className='flex gap-4 text-lg hover:text-[#067aee]'>
+                                <span className='text-3xl text-[#094f94]'><AiOutlineFacebook /></span>
+                                Facebook</a>
+
+                        </div>
                     </div>
                     <hr />
                     <div>

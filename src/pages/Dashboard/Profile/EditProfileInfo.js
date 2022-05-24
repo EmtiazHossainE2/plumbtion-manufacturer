@@ -6,6 +6,7 @@ import demoProfile from '../../../assets/images/demoProfile.png'
 import { useQuery } from 'react-query';
 import Loading from '../../../components/Loading';
 import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 
 const EditProfileInfo = () => {
     const { profileId } = useParams()
@@ -60,28 +61,29 @@ const EditProfileInfo = () => {
                         facebook: event.target.facebook.value
                     }
                     console.log(updateInfo);
-                    // fetch(`http://localhost:5000/user/${profileId}`, {
-                    //     method: 'PUT',
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                    //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                    //     },
-                    //     body: JSON.stringify(updateInfo),
-                    // })
-                    //     .then(response => response.json())
-                    //     .then(data => {
-                    //         console.log('Success:', data);
-                    //         Swal.fire({
-                    //             text: `Successfully update`,
-                    //             icon: 'success',
-                    //             confirmButtonText: 'Thank you.'
-                    //         })
-                    //         navigate('/dashboard/my-profile')
+                    fetch(`http://localhost:5000/profile/${profileId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(updateInfo),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                            Swal.fire({
+                                text: `Successfully update`,
+                                icon: 'success',
+                                confirmButtonText: 'Thank you.'
+                            })
+                            refetch()
+                            navigate('/dashboard/my-profile')
 
-                    //     })
-                    //     .catch((error) => {
-                    //         console.error('Error:', error);
-                    //     });
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
                 }
 
             })

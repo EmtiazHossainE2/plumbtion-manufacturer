@@ -85,9 +85,9 @@ const MyProfile = () => {
                             <div>
                                 <h3 className='text-lg font-bold'>Phone Number</h3>
                                 <div>
-                                    {myProfile?.phoneNumber ?
+                                    {myProfile?.phone ?
                                         <>
-                                            <p className=''>{user?.phoneNumber}</p>
+                                            <p className=''>{myProfile?.phone}</p>
                                         </>
                                         :
                                         <p className=''>Update please</p>

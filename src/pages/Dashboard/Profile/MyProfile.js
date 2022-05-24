@@ -33,8 +33,8 @@ const MyProfile = () => {
 
     const imageStorageKey = '422e61968c3878a80022fbc5968b3094';
 
-    const onSubmit = data  => {
-        
+    const onSubmit = data => {
+
         const image = data.image[0];
 
         const formData = new FormData();
@@ -53,7 +53,7 @@ const MyProfile = () => {
                         photoURL: img
                     }
                     // console.log(updateInfo);
-                    fetch(`http://localhost:5000/my-image/${myProfile._id}`, {
+                    fetch(`https://plumbtion-manufacturer.herokuapp.com/my-image/${myProfile._id}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',

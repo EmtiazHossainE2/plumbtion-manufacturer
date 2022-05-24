@@ -14,7 +14,7 @@ const EditProfileInfo = () => {
     const email = user?.email
     const navigate = useNavigate()
 
-    const { data: myProfile, isLoading, error, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
+    const { data: myProfile, isLoading,  refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,65 +28,42 @@ const EditProfileInfo = () => {
 
     // console.log(myProfile);
 
-    const imageStorageKey = '422e61968c3878a80022fbc5968b3094';
-
     const handleUpdate = event => {
         event.preventDefault()
-        const photoURL = event.target.image.files
-
-        const image = photoURL[0];
-
-        const formData = new FormData();
-        formData.append('image', image);
-
-        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-
-        fetch(url, {
-            method: 'POST',
-            body: formData
+        const updateInfo = {
+            displayName: event.target.displayName.value,
+            phone: event.target.phone.value,
+            country: event.target.country.value,
+            address: event.target.address.value,
+            education: event.target.education.value,
+            linkedin: event.target.linkedin.value,
+            github: event.target.github.value,
+            facebook: event.target.facebook.value
+        }
+        console.log(updateInfo);
+        fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${profileId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(updateInfo),
         })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success) {
-                    const img = result.data.url
-                    const updateInfo = {
-                        photoURL: img,
-                        displayName: event.target.displayName.value,
-                        phone: event.target.phone.value,
-                        country: event.target.country.value,
-                        address: event.target.address.value,
-                        education: event.target.education.value,
-                        linkedin: event.target.linkedin.value,
-                        github: event.target.github.value,
-                        facebook: event.target.facebook.value
-                    }
-                    console.log(updateInfo);
-                    fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${profileId}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(updateInfo),
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log('Success:', data);
-                            Swal.fire({
-                                text: `Successfully update`,
-                                icon: 'success',
-                                confirmButtonText: 'Thank you.'
-                            })
-                            refetch()
-                            navigate('/dashboard/my-profile')
-
-                        })
-                        .catch((error) => {
-                            console.error('Error:', error);
-                        });
-                }
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                Swal.fire({
+                    text: `Successfully update`,
+                    icon: 'success',
+                    confirmButtonText: 'Thank you.'
+                })
+                refetch()
+                navigate('/dashboard/my-profile')
 
             })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
 
     return (
@@ -114,7 +91,6 @@ const EditProfileInfo = () => {
                                                 </div>
                                             </div>
                                         }
-                                        <input type="file" defaultValue={myProfile?.photoURL} name='image' className="pt-4 cursor-pointer input-bordered w-full  text-lg" />
                                     </div>
                                 </div>
                                 <div className='basis-3/4 space-y-5 py-5'>

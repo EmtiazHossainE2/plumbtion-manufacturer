@@ -1,6 +1,5 @@
 import React from 'react';
 import auth from '../../../Firebase/firebase.init';
-import useCheckAdmin from '../../../hooks/useCheckAdmin';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loading from '../../../components/Loading';
 import { Link } from 'react-router-dom';
@@ -8,15 +7,15 @@ import { useQuery } from 'react-query';
 import demoProfile from '../../../assets/images/demoProfile.png'
 import { BiEditAlt } from 'react-icons/bi';
 import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 
 
 
 const MyProfile = () => {
     const [user] = useAuthState(auth)
-    const [admin] = useCheckAdmin(user)
     const email = user?.email
 
-    const { data: myProfile, isLoading, error, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
+    const { data: myProfile, isLoading,  refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -28,8 +27,59 @@ const MyProfile = () => {
         return <Loading />
     }
 
-    console.log(myProfile);
+    
+    // console.log(myProfile);
 
+    const imageStorageKey = '422e61968c3878a80022fbc5968b3094';
+
+    const uploadImg = event => {
+        event.preventDefault()
+        const photoURL = event.target.image.files
+        // console.log(photoURL);
+        const image = photoURL[0];
+
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url
+                    const updateInfo = {
+                        photoURL: img
+                    }
+                    console.log(updateInfo);
+                    fetch(`http://localhost:5000/my-image/${myProfile._id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(updateInfo),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                            Swal.fire({
+                                text: `Image Upload Success .Thank you.`,
+                                icon: 'success',
+                                confirmButtonText: 'Okay'
+                            })
+                            refetch()
+
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
+
+            })
+    }
 
 
     return (
@@ -38,12 +88,14 @@ const MyProfile = () => {
                 <div className="card-body">
                     <div className='flex justify-between px-4'>
                         <h2 className='text-2xl font-bold py-5'>My Profile </h2>
-                        <Link to={`/dashboard/my-profile/${myProfile._id}`} className='text-lg text-red-400 py-5'>
-                            <div className="flex justify-center items-center">
-                                <span className='text-lg'><BiEditAlt /></span>
-                                <p> Edit</p>
-                            </div>
-                        </Link>
+                        <button className='btn mt-5 btn-primary btn-sm '>
+                            <Link to={`/dashboard/my-profile/${myProfile._id}`} >
+                                <div className="flex justify-center items-center">
+                                    <span className='text-lg'><BiEditAlt /></span>
+                                    <p className='text-white capitalize'> Edit profile</p>
+                                </div>
+                            </Link>
+                        </button>
                     </div>
                     <hr />
                     <div className='flex flex-col lg:flex-row'>
@@ -64,14 +116,15 @@ const MyProfile = () => {
                                     </div>
                                 }
                             </div>
-                            <button className='btn mt-5 btn-primary btn-sm '>
-                                <Link to={`/dashboard/my-profile/${myProfile._id}`} >
+                            <form onSubmit={uploadImg}>
+                                <input type="file"  name='image' className="pt-4 cursor-pointer input-bordered w-full  text-lg" />
+                                <button type='submit' className='btn mt-5 btn-primary btn-sm '>
                                     <div className="flex justify-center items-center">
                                         <span className='text-lg'><BiEditAlt /></span>
-                                        <p className='text-white capitalize'> Edit profile</p>
+                                        <p className='text-white capitalize'> Upload Image</p>
                                     </div>
-                                </Link>
-                            </button>
+                                </button>
+                            </form>
                         </div>
                         <div className='basis-3/4 space-y-5 py-5'>
                             <div>

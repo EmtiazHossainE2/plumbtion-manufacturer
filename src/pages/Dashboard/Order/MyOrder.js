@@ -12,7 +12,7 @@ const MyOrder = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
 
-    const { data: myOrders, isLoading, error, refetch } = useQuery('order', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/order?email=${user.email}`, {
+    const { data: myOrders, isLoading,  refetch } = useQuery('order', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/order?email=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

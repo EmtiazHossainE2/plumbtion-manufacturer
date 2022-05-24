@@ -113,18 +113,6 @@ const MyProfile = () => {
                         <div className='space-y-3'>
                             <h2 className='py-3 text-lg font-bold'>Additional Information </h2>
                             <div className='flex space-x-4'>
-                                <h4 className='text-lg'>Location : </h4>
-                                <div>
-                                    {myProfile?.location ?
-                                        <>
-                                            <p className='capitalize'> {myProfile?.location}</p>
-                                        </>
-                                        :
-                                        <p className=''> Update please</p>
-                                    }
-                                </div>
-                            </div>
-                            <div className='flex space-x-4'>
                                 <h4 className='text-lg'>Address : </h4>
                                 <div>
                                     {myProfile?.address ?
@@ -133,6 +121,18 @@ const MyProfile = () => {
                                         </>
                                         :
                                         <p className=''> Update please </p>
+                                    }
+                                </div>
+                            </div>
+                            <div className='flex space-x-4'>
+                                <h4 className='text-lg'>Country : </h4>
+                                <div>
+                                    {myProfile?.location ?
+                                        <>
+                                            <p className='capitalize'> {myProfile?.country}</p>
+                                        </>
+                                        :
+                                        <p className=''> Update please</p>
                                     }
                                 </div>
                             </div>

@@ -35,6 +35,13 @@ const ReviewSection = () => {
             </div>
 
             <Swiper
+                breakpoints={{
+                    // when window width is >= 768px
+                    768: {
+                        slidesPerView: 2,
+                        width: 768,
+                    },
+                }}
                 slidesPerView={1}
                 spaceBetween={30}
                 freeMode={true}
@@ -46,7 +53,7 @@ const ReviewSection = () => {
             >
                 <SwiperSlide className='pb-5'>
                     <div className="flex items-center justify-center cursor-pointer">
-                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 ">
+                        <div className="card lg:max-w-xl bg-base-100 shadow-xl mb-8 min-h-[60vh]">
                             <div className="card-body ">
                                 <h2 className="card-title capitalize">{numberOne?.title}</h2>
                                 <div>

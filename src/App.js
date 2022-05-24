@@ -21,6 +21,7 @@ import AddProduct from './pages/Dashboard/Product/AddProduct';
 import ManageOrders from './pages/Dashboard/Order/ManageOrders';
 import ManageProducts from './pages/Dashboard/Product/ManageProducts';
 import RequireAdmin from './pages/Account/RequireAdmin';
+import EditProfileInfo from './pages/Dashboard/Profile/EditProfileInfo';
 
 const App = () => {
     return (
@@ -43,6 +44,7 @@ const App = () => {
 
                         <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
                             <Route path='my-profile' element={<MyProfile />}></Route>
+                            <Route path='my-profile/:profileId' element={<EditProfileInfo />}></Route>
                             <Route path='my-order' element={<MyOrder />}></Route>
                             <Route path='add-review' element={<ReviewHere />}></Route>
 

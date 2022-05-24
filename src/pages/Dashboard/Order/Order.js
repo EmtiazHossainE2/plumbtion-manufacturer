@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Order = ({ order, index, refetch }) => {
-    const { email } = order
+    const { email, paid } = order
+    console.log(order);
 
     const handleCancel = () => {
         const url = `https://plumbtion-manufacturer.herokuapp.com/order/${email}`;
@@ -41,10 +43,23 @@ const Order = ({ order, index, refetch }) => {
             <th>{index + 1}</th>
             <td>{order.pipeName}</td>
             <td>{order.address}</td>
-            <td>{order.orderQuantity}</td>
+            <td>{order.orderQuantity} <small>/ps</small></td>
             <td>${order.totalPrice}</td>
-            <td><button className='btn btn-warning btn-xs'>Pay</button></td>
-            <td><button onClick={handleCancel} className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button></td>
+            <td>
+                {(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-xs btn-warning'>pay</button></Link>}
+                {(order?.paid) &&
+                    <div>
+                        <p><span className='text-success'>Paid</span></p>
+                        <p>TId: <span className='text-success'>{order.transactionId.slice(0, 10) + '...'}</span></p>
+                    </div>}
+            </td>
+            <td>
+                {paid ?
+                    <button disabled className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>
+                    :
+                    <button onClick={handleCancel} className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>
+                }
+            </td>
         </tr>
     );
 };

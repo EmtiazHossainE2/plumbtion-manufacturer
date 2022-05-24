@@ -22,6 +22,7 @@ import ManageOrders from './pages/Dashboard/Order/ManageOrders';
 import ManageProducts from './pages/Dashboard/Product/ManageProducts';
 import RequireAdmin from './pages/Account/RequireAdmin';
 import EditProfileInfo from './pages/Dashboard/Profile/EditProfileInfo';
+import Payment from './pages/Dashboard/Order/Payment';
 
 const App = () => {
     return (
@@ -46,6 +47,7 @@ const App = () => {
                             <Route path='my-profile' element={<MyProfile />}></Route>
                             <Route path='my-profile/:profileId' element={<EditProfileInfo />}></Route>
                             <Route path='my-order' element={<MyOrder />}></Route>
+                            <Route path="payment/:orderId" element={<Payment/>}></Route>
                             <Route path='add-review' element={<ReviewHere />}></Route>
 
                             {/* admin */}

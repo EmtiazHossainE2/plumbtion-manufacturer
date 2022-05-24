@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
 import Loading from '../../components/Loading';
@@ -12,6 +12,7 @@ const ToolDetail = () => {
     const { toolId } = useParams()
     const [user] = useAuthState(auth)
     const [admin] = useCheckAdmin(user)
+    const navigate = useNavigate()
 
     const { data: detail, isLoading, refetch } = useQuery('detail', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/tool/${toolId}`).then(res => res.json()))
 
@@ -117,6 +118,7 @@ const ToolDetail = () => {
                                 .catch((error) => {
                                     // console.error(error);
                                 });
+                            navigate('/dashboard/my-order')
 
                         })
                         .catch((error) => {

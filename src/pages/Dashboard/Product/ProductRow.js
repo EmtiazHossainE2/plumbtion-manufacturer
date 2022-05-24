@@ -51,8 +51,8 @@ const ProductRow = ({ product, index, refetch }) => {
                 }
             </td>
             <td>{product.name}</td>
-            <td>{product.available}</td>
-            <td>{product.minOrder}</td>
+            <td>{product.available} <small>/ps</small></td>
+            <td>{product.minOrder} <small>/ps</small></td>
             <td>${product.price}</td>
             <td><button onClick={handleDelete} className='btn btn-error text-white btn-xs font-bold'>Delete</button></td>
         </tr>

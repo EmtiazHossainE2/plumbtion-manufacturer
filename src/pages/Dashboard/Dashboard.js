@@ -9,12 +9,12 @@ const Dashboard = () => {
     const [admin] = useCheckAdmin(user)
 
     return (
-        <div>
+        <div >
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content  justify-center pt-12">
+                <div className="drawer-content  justify-center pt-5">
                     {/* <!-- Page content here --> */}
-                    <h2 className='text-3xl text-purple-700 text-center pb-4'>DashBoard </h2>
+                    <h2 className='text-3xl text-purple-700 text-center pb-5'>DashBoard </h2>
                     <Outlet />
                 </div>
                 <div className="drawer-side">

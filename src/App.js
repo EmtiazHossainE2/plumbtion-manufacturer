@@ -25,7 +25,7 @@ import EditProfileInfo from './pages/Dashboard/Profile/EditProfileInfo';
 
 const App = () => {
     return (
-        <div className='scroll-smooth'>
+        <div className='scroll-smooth max-w-7xl mx-auto'>
             <Navbar>
                 <ScrollToTop>
                     <Routes >

@@ -16,7 +16,7 @@ const MyProfile = () => {
     const [admin] = useCheckAdmin(user)
     const email = user?.email
 
-    const { data: myProfile, isLoading, error, refetch } = useQuery('profile', () => fetch(`http://localhost:5000/profile/${email}`, {
+    const { data: myProfile, isLoading, error, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

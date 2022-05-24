@@ -10,7 +10,7 @@ import ManageOrderRow from './ManageOrderRow';
 const ManageOrders = () => {
     const navigate = useNavigate()
 
-    const { data: orders, isLoading, error, refetch } = useQuery('order', () => fetch(`http://localhost:5000/all-order`, {
+    const { data: orders, isLoading, error, refetch } = useQuery('order', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/all-order`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

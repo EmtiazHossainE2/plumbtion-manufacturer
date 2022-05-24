@@ -14,7 +14,7 @@ const EditProfileInfo = () => {
     const email = user?.email
     const navigate = useNavigate()
 
-    const { data: myProfile, isLoading, error, refetch } = useQuery('profile', () => fetch(`http://localhost:5000/profile/${email}`, {
+    const { data: myProfile, isLoading, error, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -33,7 +33,7 @@ const EditProfileInfo = () => {
     const handleUpdate = event => {
         event.preventDefault()
         const photoURL = event.target.image.files
-        
+
         const image = photoURL[0];
 
         const formData = new FormData();
@@ -50,7 +50,7 @@ const EditProfileInfo = () => {
                 if (result.success) {
                     const img = result.data.url
                     const updateInfo = {
-                        photoURL:img,
+                        photoURL: img,
                         displayName: event.target.displayName.value,
                         phone: event.target.phone.value,
                         country: event.target.country.value,
@@ -61,7 +61,7 @@ const EditProfileInfo = () => {
                         facebook: event.target.facebook.value
                     }
                     console.log(updateInfo);
-                    fetch(`http://localhost:5000/profile/${profileId}`, {
+                    fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${profileId}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ const EditProfileInfo = () => {
                                                 </div>
                                             </div>
                                         }
-                                        <input type="file" name='image' className="pt-4 cursor-pointer input-bordered w-full  text-lg" />
+                                        <input type="file" defaultValue={myProfile?.photoURL} name='image' className="pt-4 cursor-pointer input-bordered w-full  text-lg" />
                                     </div>
                                 </div>
                                 <div className='basis-3/4 space-y-5 py-5'>

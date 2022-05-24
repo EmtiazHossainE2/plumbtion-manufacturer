@@ -170,7 +170,7 @@ const ToolDetail = () => {
                                 <input type="text" disabled value={user?.displayName || ''} name='userName' className="input input-bordered w-full max-w-md text-lg" />
                                 <input type="email" disabled value={user?.email || ''} name='email' className="input input-bordered w-full max-w-md text-lg" />
                                 <input type="number" placeholder={`Min Order ${detail?.minOrder}`} name='quantity' className="input input-bordered w-full max-w-md text-lg" required />
-                                {/* <input type="number" placeholder={`Min Order ${detail?.minOrder}`}name='quantity' min={detail?.minOrder} max={detail?.available} className="input input-bordered w-full max-w-md text-lg" required /> */}
+                                {/* <input type="number" defaultValue={detail?.minOrder} name='quantity' min={detail?.minOrder} max={detail?.available} className="input input-bordered w-full max-w-md text-lg" required /> */}
                                 <textarea rows={2} type="text" placeholder='Your Address' name='address' className=" input-bordered w-full textarea max-w-md text-lg " />
                                 <input type="number" placeholder="Phone Number" name='phone' className="input input-bordered w-full max-w-md text-lg" />
 

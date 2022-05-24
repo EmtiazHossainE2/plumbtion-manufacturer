@@ -12,7 +12,7 @@ const Tool = ({ tool }) => {
                 <p className='pb-2'>{des.slice(0, 100) + '...'}</p>
                 <div className="flex flex-col md:flex-row ">
                     <p className='font-bold'>Min Order : <span className='text-[#2a6ee4]'>{minOrder}</span></p>
-                    <p className='font-bold'>Price : $ <span className='text-[#2a6ee4]'>{price}<small>/p</small></span></p>
+                    <p className='font-bold'>Price : $ <span className='text-[#2a6ee4]'>{price}<small>/ps</small></span></p>
                 </div>
                 <div className="flex flex-col md:flex-row">
                     <p className='font-bold'>Available : <span className='text-[#2a6ee4]'>{available}</span></p>

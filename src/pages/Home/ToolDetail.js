@@ -27,10 +27,10 @@ const ToolDetail = () => {
 
         const orderQuantity = parseInt(event.target.quantity.value)
         const totalPrice = parseInt(orderQuantity) * parseInt(detail?.price)
-
+        
         if (admin) {
             Swal.fire({
-                text: `Sorry ! You are unable to Order .`,
+                text: `Sorry,Admin ! You are unable to Order .`,
                 icon: 'error',
                 confirmButtonText: 'Okay'
             })
@@ -169,12 +169,18 @@ const ToolDetail = () => {
                             <form onSubmit={handlePurchase} className='space-y-4 pt-8 '>
                                 <input type="text" disabled value={user?.displayName || ''} name='userName' className="input input-bordered w-full max-w-md text-lg" />
                                 <input type="email" disabled value={user?.email || ''} name='email' className="input input-bordered w-full max-w-md text-lg" />
-                                <input type="number" placeholder={`Min Order ${detail?.minOrder}`}name='quantity' className="input input-bordered w-full max-w-md text-lg" required />
+                                <input type="number" placeholder={`Min Order ${detail?.minOrder}`} name='quantity' className="input input-bordered w-full max-w-md text-lg" required />
                                 {/* <input type="number" placeholder={`Min Order ${detail?.minOrder}`}name='quantity' min={detail?.minOrder} max={detail?.available} className="input input-bordered w-full max-w-md text-lg" required /> */}
                                 <textarea rows={2} type="text" placeholder='Your Address' name='address' className=" input-bordered w-full textarea max-w-md text-lg " />
                                 <input type="number" placeholder="Phone Number" name='phone' className="input input-bordered w-full max-w-md text-lg" />
 
-                                <input type="submit" disabled={detail?.available < detail?.minOrder} value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />
+                                {parseInt(detail?.available) < parseInt(detail?.minOrder)
+                                    ?
+                                    <input type="submit" disabled value="We Dont't have Sufficient Pipe" className="btn btn-secondary text-white w-full max-w-md " />
+                                    :
+                                    <input type="submit" value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />
+                                }
+                                
                             </form>
                         </div>
                         <div className='flex-1 '>

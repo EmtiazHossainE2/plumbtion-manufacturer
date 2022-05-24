@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L14pjDEsxnXfJbTiZgmC0dz3uHctqNriljNu
 const Payment = () => {
     const { orderId } = useParams();
 
-    const { data: myOrder, isLoading } = useQuery(['booking', orderId], () => fetch(`http://localhost:5000/order/${orderId}`, {
+    const { data: myOrder, isLoading } = useQuery(['booking', orderId], () => fetch(`https://plumbtion-manufacturer.herokuapp.com/order/${orderId}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

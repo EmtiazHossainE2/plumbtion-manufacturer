@@ -7,7 +7,6 @@ import { useQuery } from 'react-query';
 import demoProfile from '../../../assets/images/demoProfile.png'
 import { BiEditAlt } from 'react-icons/bi';
 import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-icons/ai';
-import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 
 

@@ -8,7 +8,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
     // console.log(order);
 
     const handleDelete = () => {
-        const url = `http://localhost:5000/all-order/${_id}`;
+        const url = `https://plumbtion-manufacturer.herokuapp.com/all-order/${_id}`;
         Swal.fire({
             text: `Are you sure to delete ${pipeName} ?`,
             icon: "warning",

@@ -8,14 +8,16 @@ import demoProfile from '../../../assets/images/demoProfile.png'
 import { BiEditAlt } from 'react-icons/bi';
 import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-icons/ai';
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
 
 
 
 const MyProfile = () => {
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
     const email = user?.email
 
-    const { data: myProfile, isLoading,  refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
+    const { data: myProfile, isLoading, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -27,16 +29,13 @@ const MyProfile = () => {
         return <Loading />
     }
 
-    
     // console.log(myProfile);
 
     const imageStorageKey = '422e61968c3878a80022fbc5968b3094';
 
-    const uploadImg = event => {
-        event.preventDefault()
-        const photoURL = event.target.image.files
-        // console.log(photoURL);
-        const image = photoURL[0];
+    const onSubmit = data  => {
+        
+        const image = data.image[0];
 
         const formData = new FormData();
         formData.append('image', image);
@@ -53,7 +52,7 @@ const MyProfile = () => {
                     const updateInfo = {
                         photoURL: img
                     }
-                    console.log(updateInfo);
+                    // console.log(updateInfo);
                     fetch(`http://localhost:5000/my-image/${myProfile._id}`, {
                         method: 'PUT',
                         headers: {
@@ -64,12 +63,8 @@ const MyProfile = () => {
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log('Success:', data);
-                            Swal.fire({
-                                text: `Image Upload Success .Thank you.`,
-                                icon: 'success',
-                                confirmButtonText: 'Okay'
-                            })
+                            // console.log(data);
+                            reset();
                             refetch()
 
                         })
@@ -101,10 +96,10 @@ const MyProfile = () => {
                     <div className='flex flex-col lg:flex-row'>
                         <div className='basis-2/4 p-8 '>
                             <div className='flex '>
-                                {user?.photoURL
+                                {myProfile?.photoURL
                                     ?
                                     <div className="avatar">
-                                        <div className="w-36 rounded-full">
+                                        <div className="w-48 rounded-full">
                                             <img src={myProfile?.photoURL} alt="User" />
                                         </div>
                                     </div>
@@ -116,11 +111,24 @@ const MyProfile = () => {
                                     </div>
                                 }
                             </div>
-                            <form onSubmit={uploadImg}>
-                                <input type="file"  name='image' className="pt-4 cursor-pointer input-bordered w-full  text-lg" />
-                                <button type='submit' className='btn mt-5 btn-primary btn-sm '>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div className="form-control w-full max-w-xs">
+                                    <input
+                                        type="file"
+                                        className="pt-4 cursor-pointer input-bordered w-full  text-lg"
+                                        {...register("image", {
+                                            required: {
+                                                value: true,
+                                                message: 'Image is Required'
+                                            }
+                                        })}
+                                    />
+                                    <label className="label">
+                                        {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                    </label>
+                                </div>
+                                <button type='submit' className='btn mt-3 btn-info btn-sm '>
                                     <div className="flex justify-center items-center">
-                                        <span className='text-lg'><BiEditAlt /></span>
                                         <p className='text-white capitalize'> Upload Image</p>
                                     </div>
                                 </button>

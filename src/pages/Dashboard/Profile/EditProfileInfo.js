@@ -80,13 +80,13 @@ const EditProfileInfo = () => {
                                         {myProfile?.photoURL
                                             ?
                                             <div className="avatar">
-                                                <div className="w-36 rounded-full">
+                                                <div className="w-48 rounded-full">
                                                     <img src={myProfile?.photoURL} alt="User" />
                                                 </div>
                                             </div>
                                             :
                                             <div className="avatar">
-                                                <div className="w-36 rounded-full">
+                                                <div className="w-48 rounded-full">
                                                     <img src={demoProfile} alt="Demo" />
                                                 </div>
                                             </div>

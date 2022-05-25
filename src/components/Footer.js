@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-            <footer className="footer footer-center p-4 bg-[#e4e6ed] text-base-content py-5">
+            <footer className="footer footer-center p-4 bg-[#e0e0e1] text-base-content py-5">
                 <div>
                     <p>Copyright © {currentYear} - All right reserved by <Link to='/' className='text-primary'>Plumbtion</Link></p>
                 </div>

@@ -23,6 +23,7 @@ import ManageProducts from './pages/Dashboard/Product/ManageProducts';
 import RequireAdmin from './pages/Account/RequireAdmin';
 import EditProfileInfo from './pages/Dashboard/Profile/EditProfileInfo';
 import Payment from './pages/Dashboard/Order/Payment';
+import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
 
 const App = () => {
     return (
@@ -38,6 +39,7 @@ const App = () => {
                         <Route path='/blog' element={<Blog />}></Route>
                         <Route path='/about' element={<About />}></Route>
                         <Route path='/contact' element={<Contact />}></Route>
+                        <Route path='/portfolio' element={<MyPortfolio />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/signup' element={<Signup />}></Route>
 

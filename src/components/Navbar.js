@@ -39,6 +39,11 @@ const Navbar = ({ children }) => {
                 About
             </NavLink>
         </li>
+        <li>
+            <NavLink to='/portfolio' className='rounded-lg '>
+                My Portfolio
+            </NavLink>
+        </li>
         {user?.uid
             ?
             <li className='dropdown  dropdown-end '>
@@ -134,6 +139,11 @@ const Navbar = ({ children }) => {
                         <li>
                             <NavLink to='/about' className='rounded-lg text-md font-bold'>
                                 About
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/portfolio' className='rounded-lg text-md font-bold '>
+                                My Portfolio
                             </NavLink>
                         </li>
                         {/* mobile menu end */}

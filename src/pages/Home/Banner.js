@@ -1,14 +1,15 @@
 import React from 'react';
+import  './Banner.css'
 
 const Banner = () => {
     return (
-        <div>
-            <div className="py-12">
-                <div className="hero-content flex-col lg:flex-row">
-                    <div >
+        <div className="bg-container">
+            <div className="py-12 bg-overlay">
+                <div className="hero-content flex-col lg:flex-row lg:px-12">
+                    <div className=''>
                         <img src="https://i.ibb.co/fn25XQz/man4.jpg" className="max-w-sm lg:max-w-xl rounded-lg shadow-2xl" alt='man' />
                     </div>
-                    <div className='lg:px-8 font-bold space-y-2'>
+                    <div className='lg:px-8 font-bold space-y-2 text-white'>
                         <h1 className="text-3xl ">Plumbtion is well established </h1>
                         <h1 className="text-2xl ">company manufacturing </h1>
                         <h1 className="text-2xl ">Tubes & Pipes </h1>

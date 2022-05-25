@@ -54,10 +54,9 @@ const Order = ({ order, index, refetch }) => {
                     </div>}
             </td>
             <td>
-                {paid ?
-                    <button disabled className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>
-                    :
-                    <button onClick={handleCancel} className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>
+                {paid
+                    ? <button disabled className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>
+                    : <button onClick={handleCancel} className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>
                 }
             </td>
         </tr>

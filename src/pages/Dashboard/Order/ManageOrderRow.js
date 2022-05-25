@@ -36,10 +36,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
                 })
             }
         })
-
     }
-
-
 
     return (
         <tr >
@@ -50,25 +47,22 @@ const ManageOrderRow = ({ order, index, refetch }) => {
             <td>$ {order.totalPrice}</td>
             <td>
                 {paid
-                    ?
-                    <p><span className='text-success'>Paid</span></p>
-                    :
-                    <span className='text-error'>Unpaid</span>
+                    ?<p><span className='text-success'>Paid</span></p>
+                    :<span className='text-error'>Unpaid</span>
                 }
             </td>
             <td><button className='btn btn-error text-white btn-xs font-bold'>Pending</button></td>
             <td>
                 {paid
-                    ?
-                    <button disabled className=' btn-xs font-bold'>
+                    ?(<button disabled className=' btn-xs font-bold'>
                         <span className='text-2xl text-[#cdcccc]'><RiDeleteBin5Line /></span>
                     </button>
-                    :
+                    ):(
                     <button onClick={handleDelete} className='  btn-xs font-bold'>
                         <span className='text-2xl text-red-400'><RiDeleteBin5Line /></span>
                     </button>
+                    )
                 }
-
             </td>
         </tr>
     );

@@ -11,9 +11,7 @@ import Tools from './Tools';
 const Home = () => {
     return (
         <div>
-            <div className="lg:px-12">
-                <Banner />
-            </div>
+            <Banner />
             <Tools />
             <ChooseUs/>
             <ProudSection/>

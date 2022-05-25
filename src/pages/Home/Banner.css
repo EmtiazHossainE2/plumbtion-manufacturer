@@ -1,11 +1,11 @@
-.bg-img {
+.bg-container {
     background-color: #ffffff;
-    background-image: url("../../assets/images/banner2.jpg");
+    background-image: url("https://i.ibb.co/0rjjVs2/banner1.jpg");
     background-position: top left;
     background-size: cover;
 }
 
-.background-overlay {
+.bg-overlay {
     background-color: #06121c;
     opacity: 0.9;
     transition: background 0.3s, border-radius 0.3s, opacity 0.3s;

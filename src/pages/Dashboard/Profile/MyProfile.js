@@ -63,6 +63,7 @@ const MyProfile = () => {
                         .then(response => response.json())
                         .then(data => {
                             // console.log(data);
+                            
                             reset();
                             refetch()
 

@@ -127,38 +127,33 @@ const UserList = ({ user, index, refetch }) => {
             <th>{index + 1}</th>
             <td>
                 {user?.photoURL
-                    ?
-                    <div className="avatar">
-                        <div className="w-12 rounded-full">
-                            <img src={user?.photoURL} alt="User Profile" />
+                    ?(
+                        <div className="avatar">
+                            <div className="w-12 rounded-full">
+                                <img src={user?.photoURL} alt="User Profile" />
+                            </div>
                         </div>
-                    </div>
-                    :
+                    ):(
                     <div className="avatar">
                         <div className="w-12 rounded">
                             <img src={demoProfile} alt="Demo Profile" />
                         </div>
                     </div>
+                    )
                 }
             </td>
             <td>{email}</td>
             <td>
 
-                {role === 'admin' ?
-                    <div className='text-lg text-green-500 font-bold'>Admin</div>
-                    :
-                    <div className='text-md'>user</div>
+                {role === 'admin'
+                    ? <div className='text-lg text-green-500 font-bold'>Admin</div>
+                    : <div className='text-md'>user</div>
                 }
             </td>
             <td>
-                {role === 'admin' ?
-                    <>
-                        <button onClick={makeUser} className='btn btn-xs'>Remove Admin</button>
-                    </>
-                    :
-                    <>
-                        <button onClick={makeAdmin} className='btn btn-xs'>Make Admin</button>
-                    </>
+                {role === 'admin'
+                    ? <button onClick={makeUser} className='btn btn-xs'>Remove Admin</button>
+                    : <button onClick={makeAdmin} className='btn btn-xs'>Make Admin</button>
                 }
             </td>
             <td><button onClick={handleDelete} className='btn btn-xs btn-error'>Remove</button></td>

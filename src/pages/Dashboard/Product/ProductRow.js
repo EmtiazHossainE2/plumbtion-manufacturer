@@ -42,12 +42,13 @@ const ProductRow = ({ product, index, refetch }) => {
             <th>{index + 1}</th>
             <td>
                 {product?.img
-                    &&
-                    <div className="avatar">
-                        <div className="w-12 rounded-full">
-                            <img src={product?.img} alt="User Profile" />
+                    && (
+                        <div className="avatar">
+                            <div className="w-12 rounded-full">
+                                <img src={product?.img} alt="User Profile" />
+                            </div>
                         </div>
-                    </div>
+                    )
                 }
             </td>
             <td>{product.name}</td>

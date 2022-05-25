@@ -27,7 +27,7 @@ import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
 
 const App = () => {
     return (
-        <div className='scroll-smooth max-w-7xl mx-auto'>
+        <div className='scroll-smooth '>
             <Navbar>
                 <ScrollToTop>
                     <Routes >

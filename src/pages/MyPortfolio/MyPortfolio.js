@@ -4,7 +4,6 @@ import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-ico
 import education from '../../assets/project/edu1.png'
 import handyman from '../../assets/project/handy1.png'
 import camera from '../../assets/project/camera1.png'
-import { Link } from 'react-router-dom';
 
 const MyPortfolio = () => {
     return (

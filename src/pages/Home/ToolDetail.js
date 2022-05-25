@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
 import Loading from '../../components/Loading';
@@ -12,23 +13,16 @@ const ToolDetail = () => {
     const { toolId } = useParams()
     const [user] = useAuthState(auth)
     const [admin] = useCheckAdmin(user)
-    const navigate = useNavigate()
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const { data: detail, isLoading, refetch } = useQuery('detail', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/tool/${toolId}`).then(res => res.json()))
-
-
 
     if (isLoading) {
         return <Loading />
     }
 
-
-    const handlePurchase = event => {
-        event.preventDefault()
-
-        const orderQuantity = parseInt(event.target.quantity.value)
-        const totalPrice = parseInt(orderQuantity) * parseInt(detail?.price)
-        
+    const onSubmit = async data => {
+        // console.log(data);
         if (admin) {
             Swal.fire({
                 text: `Sorry,Admin ! You are unable to Order .`,
@@ -38,101 +32,62 @@ const ToolDetail = () => {
             return
         }
         else {
-            if (orderQuantity < parseInt(detail?.minOrder)) {
-                Swal.fire({
-                    text: `Min Order is ${detail?.minOrder} pice`,
-                    icon: 'error',
-                    confirmButtonText: 'Okay'
-                })
-                return
+            const purchaseInfo = {
+                userName: user.displayName,
+                email: user.email,
+                orderQuantity: parseInt(data.quantity),
+                address: data.address,
+                phone: data.phone,
+                pipeName: detail?.name,
+                totalPrice: parseInt(data.quantity) * parseInt(detail?.price)
+
             }
-            if (orderQuantity > parseInt(detail?.available)) {
-                Swal.fire({
-                    text: `We don't have sufficient Pipe . Max order is ${detail?.available}`,
-                    icon: 'error',
-                    confirmButtonText: 'Okay'
-                })
-                return
-            }
-            else {
-                const purchaseInfo = {
-                    userName: user?.displayName,
-                    email: user?.email,
-                    pipeName: detail?.name,
-                    totalPrice,
-                    orderQuantity,
-                    address: event.target.address.value,
-                    phone: event.target.phone.value
-                }
-                if (purchaseInfo.address === '') {
+            // console.log(purchaseInfo);
+            fetch(`https://plumbtion-manufacturer.herokuapp.com/order`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(purchaseInfo),
+            })
+                .then(response => response.json())
+                .then(data => {
                     Swal.fire({
-                        text: "Provide Original Address",
-                        icon: 'error',
-                        confirmButtonText: 'Okay'
+                        text: `Your are order ${purchaseInfo.orderQuantity} /ps pipe. We will contact you soon`,
+                        icon: 'success',
+                        confirmButtonText: 'Thank you.'
                     })
-                    return
-                }
-                if (purchaseInfo.phone === '') {
-                    Swal.fire({
-                        text: 'Provide Phone Number',
-                        icon: 'error',
-                        confirmButtonText: 'Okay'
-                    })
-                    return
-                }
-                else {
-                    // console.log(purchaseInfo);
-                    fetch(`https://plumbtion-manufacturer.herokuapp.com/order`, {
-                        method: 'POST',
+                    const newAvailable = {
+                        available: parseInt(detail?.available) - purchaseInfo.orderQuantity,
+                    }
+                    const url = `https://plumbtion-manufacturer.herokuapp.com/tool/${toolId}`
+
+                    fetch(url, {
+                        method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(purchaseInfo),
+                        body: JSON.stringify(newAvailable),
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log('Success:', data);
-                            Swal.fire({
-                                text: `Your are order ${orderQuantity} pice pipe. We will contact you soon`,
-                                icon: 'success',
-                                confirmButtonText: 'Thank you.'
-                            })
-                            const newAvailable = {
-                                available: parseInt(detail?.available) - orderQuantity,
-                            }
-                            const url = `https://plumbtion-manufacturer.herokuapp.com/tool/${toolId}`
-
-                            fetch(url, {
-                                method: 'PUT',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(newAvailable),
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    // console.log(data);
-                                    refetch()
-
-                                })
-                                .catch((error) => {
-                                    // console.error(error);
-                                });
-                            navigate('/dashboard/my-order')
+                            // console.log(data);
+                            refetch()
+                            reset()
 
                         })
                         .catch((error) => {
-                            console.error('Error:', error);
+                            // console.error(error);
                         });
-                }
-            }
+
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         }
 
-
-
-
-
     }
+    // console.log(errors);
 
     return (
         <div>
@@ -168,23 +123,91 @@ const ToolDetail = () => {
                     <div className="flex flex-col lg:flex-row justify-center space-y-12 lg:space-y-0">
                         <div className='text-center flex-1'>
                             <h3 className="font-bold text-3xl "> Place Order Here </h3>
-                            <form onSubmit={handlePurchase} className='space-y-4 pt-8 '>
-                                <input type="text" disabled value={user?.displayName || ''} name='userName' className="input input-bordered w-full max-w-md text-lg" />
-                                <input type="email" disabled value={user?.email || ''} name='email' className="input input-bordered w-full max-w-md text-lg" />
 
-                                <input type="number" defaultValue={detail?.minOrder} name='quantity'  className="input input-bordered w-full max-w-md text-lg" required />
+                            <div className="card lg:max-w-lg  bg-base-100 shadow-xl ">
+                                <div className="card-body ">
+                                    {parseInt(detail?.available) < parseInt(detail?.minOrder)
+                                        ?
+                                        <input type="submit" disabled value="We Dont't have Sufficient Pipe . Try another day" className="btn btn-secondary text-white w-full max-w-md " />
+                                        :
+                                        <form onSubmit={handleSubmit(onSubmit)} className="pt-8 space-y-3 flex flex-col justify-center items-center">
+                                            <div className="form-control w-full max-w-xs">
+                                                <input
+                                                    type="text"
+                                                    disabled
+                                                    value={user?.displayName}
+                                                    className="input input-bordered w-full max-w-xs text-lg "
 
-                                <textarea rows={2} type="text" placeholder='Your Address' name='address' className=" input-bordered w-full textarea max-w-md text-lg " />
+                                                />
+                                            </div>
 
-                                <input type="number" placeholder="Phone Number" name='phone' className="input input-bordered w-full max-w-md text-lg" />
-                                {parseInt(detail?.available) < parseInt(detail?.minOrder)
-                                    ?
-                                    <input type="submit" disabled value="We Dont't have Sufficient Pipe" className="btn btn-secondary text-white w-full max-w-md " />
-                                    :
-                                    <input type="submit" value="Submit" className="btn btn-secondary text-white w-full max-w-md text-lg" />
-                                }
-                                
-                            </form>
+                                            <div className="form-control w-full max-w-xs ">
+                                                <input
+                                                    type="email"
+                                                    disabled
+                                                    value={user?.email}
+                                                    className="input input-bordered w-full max-w-xs text-lg"
+
+                                                />
+                                            </div>
+                                            <div className="form-control w-full max-w-xs">
+                                                <input
+                                                    type="number"
+                                                    placeholder={`Min order is ${detail?.minOrder}`}
+                                                    className="input input-bordered w-full max-w-xs text-lg "
+                                                    {...register("quantity", {
+                                                        required: true,
+                                                        min: {
+                                                            value: parseInt(detail.minOrder)
+                                                        },
+                                                        max: {
+                                                            value: parseInt(detail.available)
+                                                        }
+                                                    })}
+                                                />
+                                                <p className='text-red-500 flex justify-start py-2'>
+                                                    {errors.quantity?.type === 'required' && "Quantity is required"}
+                                                    {errors.quantity?.type === 'min' && `Min order is ${detail.minOrder}`}
+                                                    {errors.quantity?.type === 'max' && `Min order is ${detail?.available}`}
+                                                </p>
+                                            </div>
+                                            <div className="form-control w-full max-w-xs ">
+                                                <input
+                                                    type="text"
+                                                    placeholder='Shipping Address'
+                                                    className="input input-bordered w-full max-w-xs text-lg"
+                                                    {...register("address", {
+                                                        required: true
+                                                    })}
+                                                />
+                                                <p className='text-red-500 flex justify-start py-2'>
+                                                    {errors.address?.type === 'required' && 'Shipping Address is Required'}
+                                                </p>
+                                            </div>
+                                            <div className="form-control w-full max-w-xs">
+                                                <input
+                                                    type="number"
+                                                    placeholder="Phone Number"
+                                                    className="input input-bordered w-full max-w-xs text-lg"
+                                                    {...register("phone", {
+                                                        required: true
+                                                    })}
+                                                />
+                                                <p className='text-red-500 flex justify-start py-2'>
+                                                    {errors.phone?.type === 'required' && 'Phone is Required'}
+                                                </p>
+                                            </div>
+
+                                            <input type="submit" disabled={errors.quantity ? true : false} value="Submit" className="btn btn-secondary text-white disabled:bg-[#b5b3b3] disabled:text-white disabled:cursor-not-allowed text-lg" />
+
+                                        </form>
+                                    }
+
+                                </div>
+                            </div>
+
+
+
                         </div>
                         <div className='flex-1 '>
                             <div>

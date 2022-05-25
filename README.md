@@ -34,10 +34,10 @@
 * Tailwind (daisyui)
 * Sweet Alert2
 * Swiper js
-* React Rating Stars Ccomponent
+* React Rating Stars Component
 * stripe-js
 
 # Website demo 
 
-![Desktop  View]( "Plumbtion Manufacture Demo")
+![Desktop  View](https://i.ibb.co/xX0F0zG/home2.jpg "Plumbtion Manufacture Demo")
 

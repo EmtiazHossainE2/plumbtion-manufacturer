@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import auth from '../../../Firebase/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loading from '../../../components/Loading';
@@ -15,7 +15,6 @@ const MyProfile = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth)
     const email = user?.email
-    const [loading , setLoading] = useState(false)
 
     const { data: myProfile, isLoading, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${email}`, {
         method: 'GET',
@@ -25,7 +24,7 @@ const MyProfile = () => {
     })
         .then(res => res.json()))
 
-    if (isLoading || loading) {
+    if (isLoading ) {
         return <Loading />
     }
 

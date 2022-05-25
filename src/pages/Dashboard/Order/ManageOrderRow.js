@@ -3,9 +3,51 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 
 const ManageOrderRow = ({ order, index, refetch }) => {
+    
+    const { _id, paid, pipeName } = order
     // console.log(order);
-    const { _id, paid,pipeName } = order
-    // console.log(order);
+
+    const handlePending = () => {
+        const url = `https://plumbtion-manufacturer.herokuapp.com/all-order/order/${_id}`
+        Swal.fire({
+            text: "Are you sure this product is shipped ?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Shipped",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                })
+                    .then(res => {
+                        if (res.status === 403) {
+                            Swal.fire({
+                                text: 'Your are unable to  shipped',
+                                icon: 'error',
+                                confirmButtonText: 'Okay'
+                            })
+                        }
+                        return res.json()
+                    })
+                    .then(data => {
+                        if (data.modifiedCount > 0) {
+                            refetch()
+                            Swal.fire({
+                                text: `Successfully Shipped`,
+                                icon: 'success',
+                                confirmButtonText: 'Thank you.'
+                            })
+                        }
+                    })
+            }
+        })
+
+    }
 
     const handleDelete = () => {
         const url = `https://plumbtion-manufacturer.herokuapp.com/all-order/${_id}`;
@@ -47,20 +89,30 @@ const ManageOrderRow = ({ order, index, refetch }) => {
             <td>$ {order.totalPrice}</td>
             <td>
                 {paid
-                    ?<p><span className='text-success'>Paid</span></p>
-                    :<span className='text-error'>Unpaid</span>
+                    ? <p><span className='text-success'>Paid</span></p>
+                    : <span className='text-error'>Unpaid</span>
                 }
             </td>
-            <td><button className='btn btn-error text-white btn-xs font-bold'>Pending</button></td>
             <td>
                 {paid
-                    ?(<button disabled className=' btn-xs font-bold'>
+                    ?
+                    <>{order?.process
+                        ? <h2 className='text-green-500'>Shipped</h2>
+                        : <button onClick={handlePending} className='btn btn-error text-white btn-xs font-bold'>Pending</button>}
+                    </> :
+                    <button disabled className='btn  btn-error text-white btn-xs font-bold'>Pending</button>
+                }
+
+            </td>
+            <td>
+                {paid
+                    ? (<button disabled className=' btn-xs font-bold'>
                         <span className='text-2xl text-[#cdcccc]'><RiDeleteBin5Line /></span>
                     </button>
-                    ):(
-                    <button onClick={handleDelete} className='  btn-xs font-bold'>
-                        <span className='text-2xl text-red-400'><RiDeleteBin5Line /></span>
-                    </button>
+                    ) : (
+                        <button onClick={handleDelete} className='  btn-xs font-bold'>
+                            <span className='text-2xl text-red-400'><RiDeleteBin5Line /></span>
+                        </button>
                     )
                 }
             </td>

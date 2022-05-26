@@ -50,7 +50,7 @@ const MyPortfolio = () => {
                             </div>
                             <div className='py-3 '>
                                 <h4 className='font-bold'>Present </h4>
-                                <p>After getting auto pass in HSC I'm not continue my study . Now try to getting scholarship </p>
+                                <p>After getting auto pass in HSC I'm not continue my study . Now i'm try to get scholarship and learn something special . </p>
                             </div>
                         </div>
                     </div>

@@ -168,14 +168,14 @@ const ToolDetail = () => {
                                                 <p className='text-red-500 flex justify-start py-2'>
                                                     {errors.quantity?.type === 'required' && "Quantity is required"}
                                                     {errors.quantity?.type === 'min' && `Min order is ${detail.minOrder}`}
-                                                    {errors.quantity?.type === 'max' && `Min order is ${detail?.available}`}
+                                                    {errors.quantity?.type === 'max' && `Max order is ${detail?.available}`}
                                                 </p>
                                             </div>
                                             <div className="form-control w-full max-w-xs ">
-                                                <input
+                                                <textarea
                                                     type="text"
                                                     placeholder='Shipping Address'
-                                                    className="input input-bordered w-full max-w-xs text-lg"
+                                                    className=" textarea textarea-bordered w-full max-w-xs text-lg"
                                                     {...register("address", {
                                                         required: true
                                                     })}

@@ -54,6 +54,12 @@ const Order = ({ order, index, refetch }) => {
                     </div>}
             </td>
             <td>
+                {order?.process
+                    ? <p className='text-success font-bold'>Shipped</p>
+                    : <p className='text-red-400 font-bold'>Pending</p>
+                }
+            </td>
+            <td>
                 {paid
                     ? <button disabled className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>
                     : <button onClick={handleCancel} className='btn btn-error text-white btn-xs font-bold'>Cancel Order</button>

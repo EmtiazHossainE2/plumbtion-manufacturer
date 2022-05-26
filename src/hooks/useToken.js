@@ -5,13 +5,11 @@ const useToken = user => {
     useEffect(() => {
         // console.log('inside token' , user);
         const email = user?.user?.email
-        const photoURL = user?.user?.photoURL
         const displayName = user?.user?.displayName
         const creationTime = user?.user?.metadata?.creationTime
         const lastLogin = user?.user?.metadata?.lastSignInTime
         const currentUser = {
             email,
-            photoURL,
             displayName,
             creationTime,
             lastLogin

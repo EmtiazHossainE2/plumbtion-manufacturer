@@ -3,7 +3,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 
 const ManageOrderRow = ({ order, index, refetch }) => {
-    
+
     const { _id, paid, pipeName } = order
     // console.log(order);
 
@@ -100,21 +100,14 @@ const ManageOrderRow = ({ order, index, refetch }) => {
                         ? <h2 className='text-green-500'>Shipped</h2>
                         : <button onClick={handlePending} className='btn btn-error text-white btn-xs font-bold'>Pending</button>}
                     </> :
-                    <button disabled className='btn  btn-error text-white btn-xs font-bold'>Pending</button>
+                    <button disabled className='btn btn-error text-white btn-xs font-bold'>Pending</button>
                 }
 
             </td>
             <td>
-                {paid
-                    ? (<button disabled className=' btn-xs font-bold'>
-                        <span className='text-2xl text-[#cdcccc]'><RiDeleteBin5Line /></span>
-                    </button>
-                    ) : (
-                        <button onClick={handleDelete} className='  btn-xs font-bold'>
-                            <span className='text-2xl text-red-400'><RiDeleteBin5Line /></span>
-                        </button>
-                    )
-                }
+                <button disabled={paid } onClick={handleDelete} className='  btn-xs font-bold  disabled:text-[#a09d9d] disabled:cursor-not-allowed text-red-400'>
+                    <span className='text-2xl '><RiDeleteBin5Line /></span>
+                </button>
             </td>
         </tr>
     );

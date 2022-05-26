@@ -7,11 +7,25 @@ import logo from '../assets/images/logo1.png'
 import auth from '../Firebase/firebase.init';
 import demoProfile from '../assets/images/demoProfile.png'
 import useCheckAdmin from '../hooks/useCheckAdmin';
+import { useQuery } from 'react-query';
+import Loading from './Loading';
 
 const Navbar = ({ children }) => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth)
     const [admin] = useCheckAdmin(user)
+
+    const { data: myProfile, isLoading, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${user?.email}`, {
+        method: 'GET',
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        },
+    })
+        .then(res => res.json()))
+
+    if (isLoading ) {
+        return <Loading />
+    }
 
     const logOut = () => {
         signOut(auth)
@@ -44,18 +58,18 @@ const Navbar = ({ children }) => {
                 My Portfolio
             </NavLink>
         </li>
-        {user?.uid
+        {myProfile?.email
             ?
             <li className='dropdown  dropdown-end '>
                 <label
                     tabIndex='0'
                     className='rounded-lg'
                 >
-                    {user?.photoURL
+                    {myProfile?.photoURL
                         ?
                         <div className="avatar">
                             <div className="w-8  rounded-full cursor-pointer">
-                                <img src={user?.photoURL} alt="User" />
+                                <img src={myProfile?.photoURL} alt="User" />
                             </div>
                         </div>
                         :
@@ -147,7 +161,7 @@ const Navbar = ({ children }) => {
                             </NavLink>
                         </li>
                         {/* mobile menu end */}
-                        {user?.uid
+                        {myProfile?.email
                             ?
                             <>
                                 <label htmlFor="my-drawer-2" className="btn btn-outline drawer-button lg:hidden">Dashboard </label>

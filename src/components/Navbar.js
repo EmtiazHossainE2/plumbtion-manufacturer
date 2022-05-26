@@ -13,6 +13,7 @@ const Navbar = ({ children }) => {
     const [user] = useAuthState(auth)
     const [admin] = useCheckAdmin(user)
 
+
     const logOut = () => {
         signOut(auth)
         navigate('/login');
@@ -31,7 +32,7 @@ const Navbar = ({ children }) => {
         </li>
         <li>
             <NavLink to='/contact' className='rounded-lg '>
-                Contact
+                Contact 
             </NavLink>
         </li>
         <li>
@@ -39,7 +40,12 @@ const Navbar = ({ children }) => {
                 About
             </NavLink>
         </li>
-        {user?.uid
+        <li>
+            <NavLink to='/portfolio' className='rounded-lg '>
+                My Portfolio
+            </NavLink>
+        </li>
+        {user?.email
             ?
             <li className='dropdown  dropdown-end '>
                 <label
@@ -136,8 +142,13 @@ const Navbar = ({ children }) => {
                                 About
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/portfolio' className='rounded-lg text-md font-bold '>
+                                My Portfolio
+                            </NavLink>
+                        </li>
                         {/* mobile menu end */}
-                        {user?.uid
+                        {user?.email
                             ?
                             <>
                                 <label htmlFor="my-drawer-2" className="btn btn-outline drawer-button lg:hidden">Dashboard </label>

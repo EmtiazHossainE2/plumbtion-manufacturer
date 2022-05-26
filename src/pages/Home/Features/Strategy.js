@@ -6,7 +6,7 @@ const Strategy = () => {
         <div className='lg:px-12 '>
             <div className="card rounded-none bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <div className="flex flex-col lg:flex-row justify-between pb-2">
+                    <div className="flex flex-col lg:flex-row justify-between pb-2 space-y-10 lg:space-y-0">
                         <div className="avatar">
                             <div className="w-64 rounded">
                                 <img src='https://i.ibb.co/gtJM2Hx/img1.jpg' alt='factory' />

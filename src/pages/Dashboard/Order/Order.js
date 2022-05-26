@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 const Order = ({ order, index, refetch }) => {
     const { email, paid } = order
-    console.log(order);
+    // console.log(order);
 
     const handleCancel = () => {
         const url = `https://plumbtion-manufacturer.herokuapp.com/order/${email}`;

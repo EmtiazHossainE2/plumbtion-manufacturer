@@ -7,25 +7,11 @@ import logo from '../assets/images/logo1.png'
 import auth from '../Firebase/firebase.init';
 import demoProfile from '../assets/images/demoProfile.png'
 import useCheckAdmin from '../hooks/useCheckAdmin';
-import { useQuery } from 'react-query';
-import Loading from './Loading';
 
 const Navbar = ({ children }) => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth)
     const [admin] = useCheckAdmin(user)
-
-    const { data: myProfile, isLoading } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${user?.email}`, {
-        method: 'GET',
-        headers: {
-            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        },
-    })
-        .then(res => res.json()))
-
-    if (isLoading ) {
-        return <Loading />
-    }
 
     const logOut = () => {
         signOut(auth)
@@ -45,7 +31,7 @@ const Navbar = ({ children }) => {
         </li>
         <li>
             <NavLink to='/contact' className='rounded-lg '>
-                Contact 
+                Contact
             </NavLink>
         </li>
         <li>
@@ -53,23 +39,18 @@ const Navbar = ({ children }) => {
                 About
             </NavLink>
         </li>
-        <li>
-            <NavLink to='/portfolio' className='rounded-lg '>
-                My Portfolio
-            </NavLink>
-        </li>
-        {myProfile?.email
+        {user?.uid
             ?
             <li className='dropdown  dropdown-end '>
                 <label
                     tabIndex='0'
                     className='rounded-lg'
                 >
-                    {myProfile?.photoURL
+                    {user?.photoURL
                         ?
                         <div className="avatar">
                             <div className="w-8  rounded-full cursor-pointer">
-                                <img src={myProfile?.photoURL} alt="User" />
+                                <img src={user?.photoURL} alt="User" />
                             </div>
                         </div>
                         :
@@ -155,13 +136,8 @@ const Navbar = ({ children }) => {
                                 About
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink to='/portfolio' className='rounded-lg text-md font-bold '>
-                                My Portfolio
-                            </NavLink>
-                        </li>
                         {/* mobile menu end */}
-                        {myProfile?.email
+                        {user?.uid
                             ?
                             <>
                                 <label htmlFor="my-drawer-2" className="btn btn-outline drawer-button lg:hidden">Dashboard </label>

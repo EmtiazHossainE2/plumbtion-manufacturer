@@ -15,7 +15,7 @@ const Navbar = ({ children }) => {
     const [user] = useAuthState(auth)
     const [admin] = useCheckAdmin(user)
 
-    const { data: myProfile, isLoading, refetch } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${user?.email}`, {
+    const { data: myProfile, isLoading } = useQuery('profile', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/profile/${user?.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -45,7 +45,7 @@ const Navbar = ({ children }) => {
         </li>
         <li>
             <NavLink to='/contact' className='rounded-lg '>
-                Contact
+                Contact 
             </NavLink>
         </li>
         <li>

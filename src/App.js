@@ -24,6 +24,10 @@ import RequireAdmin from './pages/Account/RequireAdmin';
 import EditProfileInfo from './pages/Dashboard/Profile/EditProfileInfo';
 import Payment from './pages/Dashboard/Order/Payment';
 import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
+import QuickResponse from './pages/Home/Features/QuickResponse';
+import Planning from './pages/Home/Features/Planning';
+import Analysis from './pages/Home/Features/Analysis';
+import Strategy from './pages/Home/Features/Strategy';
 
 const App = () => {
     return (
@@ -31,7 +35,12 @@ const App = () => {
             <Navbar>
                 <ScrollToTop>
                     <Routes >
-                        <Route path='/' element={<Home />}></Route>
+                        <Route path='/' element={<Home />}>
+                            <Route path='/' element={<QuickResponse />}></Route>
+                            <Route path='/planning' element={<Planning />}></Route>
+                            <Route path='/analysis' element={<Analysis />}></Route>
+                            <Route path='/strategy' element={<Strategy />}></Route>
+                        </Route>
                         <Route path='/home' element={<Home />}></Route>
                         <Route path='/tool/:toolId' element={
                             <RequireAuth><ToolDetail /></RequireAuth>
@@ -49,7 +58,7 @@ const App = () => {
                             <Route path='my-profile' element={<MyProfile />}></Route>
                             <Route path='my-profile/:profileId' element={<EditProfileInfo />}></Route>
                             <Route path='my-order' element={<MyOrder />}></Route>
-                            <Route path="payment/:orderId" element={<Payment/>}></Route>
+                            <Route path="payment/:orderId" element={<Payment />}></Route>
                             <Route path='add-review' element={<ReviewHere />}></Route>
 
                             {/* admin */}

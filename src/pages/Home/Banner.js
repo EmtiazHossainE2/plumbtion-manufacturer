@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import  './Banner.css'
 
 const Banner = () => {
     return (
         <div className="bg-container">
-            <div className="py-12 bg-overlay">
-                <div className="hero-content flex-col lg:flex-row lg:px-12">
+            <div className="py-16 bg-overlay">
+                <div className="hero-content flex-col lg:flex-row-reverse lg:px-12">
                     <div className=''>
                         <img src="https://i.ibb.co/fn25XQz/man4.jpg" className="max-w-sm lg:max-w-xl rounded-lg shadow-2xl" alt='man' />
                     </div>
@@ -15,7 +16,7 @@ const Banner = () => {
                         <h1 className="text-2xl ">Tubes & Pipes </h1>
                         <p className="py-6 text-lg ">We also manufacture special steel pipes & tubes
                             like Inconel, duplex, super duplex etc.</p>
-                        <button className="btn btn-primary px-8">read more </button>
+                        <Link to='/about'><button className="btn btn-primary px-8">read more </button></Link>
                     </div>
                 </div>
             </div>

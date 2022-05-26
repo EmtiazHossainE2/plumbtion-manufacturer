@@ -6,7 +6,7 @@ const Tools = () => {
     const [tools] = useTools()
     const pipes = [...tools].reverse().slice(0,3)
     return (
-        <div className='lg:px-12 bg-slate-100 pt-20 pb-8'>
+        <div className='lg:px-12 bg-slate-100 pt-10 pb-8'>
             <div className='text-center space-y-4'>
                 <h2 className='text-4xl font-bold italic'>Our Tools / Parts </h2>
                 <div>

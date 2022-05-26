@@ -15,9 +15,9 @@ const Blog = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {
                         blogs.map(blog =>
-                            <div key={blog.id} class="card bg-base-100 shadow-xl">
-                                <div class="card-body">
-                                    <h2 class="card-title">{blog.question}
+                            <div key={blog.id} className="card bg-base-100 shadow-xl">
+                                <div className="card-body">
+                                    <h2 className="card-title">{blog.question}
                                     </h2>
                                     <p>{blog.answer && blog.answer}
                                     </p>
@@ -32,7 +32,7 @@ const Blog = () => {
                     }
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 };

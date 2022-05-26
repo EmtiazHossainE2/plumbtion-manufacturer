@@ -6,11 +6,11 @@ import { BiRightArrowCircle } from 'react-icons/bi';
 const Analysis = () => {
     return (
         <div className='lg:px-12 '>
-            <div class="card rounded-none bg-base-100 shadow-xl">
-                <div class="card-body">
+            <div className="card rounded-none bg-base-100 shadow-xl">
+                <div className="card-body">
                     <div className="flex flex-col lg:flex-row justify-between pb-2">
-                        <div class="avatar">
-                            <div class="w-64 rounded">
+                        <div className="avatar">
+                            <div className="w-64 rounded">
                                 <img src={quick1} alt='man' />
                             </div>
                         </div>
@@ -47,8 +47,8 @@ const Analysis = () => {
                             <p>Industrial Piping Products.</p>
                             <button className='btn btn-primary'>Explore More</button>
                         </div>
-                        <div class="avatar">
-                            <div class="w-64 rounded">
+                        <div className="avatar">
+                            <div className="w-64 rounded">
                                 <img src={quick2} alt='man' />
                             </div>
                         </div>

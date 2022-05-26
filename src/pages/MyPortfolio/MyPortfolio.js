@@ -10,8 +10,8 @@ const MyPortfolio = () => {
         <section>
             <div className='px-5 lg:px-12 bg-[#f0efef] py-5'>
                 <div className='flex flex-col md:flex-row items-center justify-center gap-12 py-10'>
-                    <div class="avatar">
-                        <div class="w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div className="avatar">
+                        <div className="w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src="https://i.ibb.co/9NgJ4Bt/My-professional-pic.jpg" alt='Emtiaz' />
                         </div>
                     </div>
@@ -37,9 +37,9 @@ const MyPortfolio = () => {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div class="card bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <h2 class="card-title"> Education Background </h2>
+                    <div className="card bg-base-100 shadow-xl">
+                        <div className="card-body">
+                            <h2 className="card-title"> Education Background </h2>
                             <div className='py-3 '>
                                 <h4 className='font-bold'>SSC 2018 (science )</h4>
                                 <p>Rangpur Zilla School , Rangpur</p>
@@ -54,9 +54,9 @@ const MyPortfolio = () => {
                             </div>
                         </div>
                     </div>
-                    <div class="card bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <h2 class="card-title"> Technologies and Skills </h2>
+                    <div className="card bg-base-100 shadow-xl">
+                        <div className="card-body">
+                            <h2 className="card-title"> Technologies and Skills </h2>
                             <div className='py-2 '>
                                 <h4 className='font-bold'>Expert:</h4>
                                 <p>HTML 5, CSS 3, Tailwind CSS , Bootstrap 5, JavaScript (ES6), React.Js, React-Bootstrap,React-router, Authentication.</p>

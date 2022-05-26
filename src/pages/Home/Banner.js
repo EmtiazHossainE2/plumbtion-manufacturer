@@ -8,7 +8,7 @@ const Banner = () => {
             <div className="py-16 bg-overlay">
                 <div className="hero-content flex-col lg:flex-row-reverse lg:px-12">
                     <div className=''>
-                        <img src="https://i.ibb.co/fn25XQz/man4.jpg" className="max-w-sm lg:max-w-xl rounded-lg shadow-2xl" alt='man' />
+                        <img src="https://i.ibb.co/fn25XQz/man4.jpg" className="max-w-sm w-full lg:max-w-xl rounded-lg shadow-2xl" alt='man' />
                     </div>
                     <div className='lg:px-8 font-bold space-y-2 text-white'>
                         <h1 className="text-3xl ">Plumbtion is well established </h1>

@@ -8,7 +8,7 @@ const Analysis = () => {
         <div className='lg:px-12 '>
             <div class="card rounded-none bg-base-100 shadow-xl">
                 <div class="card-body">
-                    <div className="flex flex-col lg:flex-row justify-between">
+                    <div className="flex flex-col lg:flex-row justify-between pb-2">
                         <div class="avatar">
                             <div class="w-64 rounded">
                                 <img src={quick1} alt='man' />

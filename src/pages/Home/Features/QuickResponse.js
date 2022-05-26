@@ -1,6 +1,5 @@
 import React from 'react';
 import quick1 from '../../../assets/images/features/quick1.jpg'
-import quick2 from '../../../assets/images/features/quick2.jpg'
 import { BiRightArrowCircle } from 'react-icons/bi';
 
 const QuickResponse = () => {
@@ -8,7 +7,7 @@ const QuickResponse = () => {
         <div className='lg:px-12 '>
             <div class="card rounded-none bg-base-100 shadow-xl">
                 <div class="card-body">
-                    <div className="flex flex-col lg:flex-row justify-between">
+                    <div className="flex flex-col lg:flex-row justify-between pb-2">
                         <div class="avatar">
                             <div class="w-64 rounded">
                                 <img src={quick1} alt='man' />
@@ -43,13 +42,13 @@ const QuickResponse = () => {
                         <div className='space-y-3 '>
                             <h2 className='text-2xl'>Our Mission <br /> Statement</h2>
                             <p>We are always open to cater  </p>
-                            <p>ur best services for</p>
+                            <p>your best services for</p>
                             <p>Industrial Piping Products.</p>
                             <button className='btn btn-primary'>Explore More</button>
                         </div>
                         <div class="avatar">
                             <div class="w-64 rounded">
-                                <img src={quick2} alt='man' />
+                            <img src='https://i.ibb.co/gtJM2Hx/img1.jpg' alt='factory' />
                             </div>
                         </div>
                     </div>

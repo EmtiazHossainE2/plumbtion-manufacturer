@@ -4,10 +4,12 @@ import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-ico
 import education from '../../assets/project/edu1.png'
 import handyman from '../../assets/project/handy1.png'
 import camera from '../../assets/project/camera1.png'
+import PageTitle from '../../components/PageTitle';
 
 const MyPortfolio = () => {
     return (
         <section>
+            <PageTitle title="My Portfolio -"></PageTitle>
             <div className='px-5 lg:px-12 bg-[#f0efef] py-5'>
                 <div className='flex flex-col md:flex-row items-center justify-center gap-12 py-10'>
                     <div className="avatar">

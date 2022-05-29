@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
+import PageTitle from '../../components/PageTitle';
 
 const Blog = () => {
     const [blogs, setBlogs] = useState([])
@@ -10,6 +11,7 @@ const Blog = () => {
     }, [])
     return (
         <>
+        <PageTitle title="Blog -"></PageTitle>
             <div className='bg-[#f0efef] px-5 lg:px-12 pb-8'>
                 <h2 className='text-center py-8 text-3xl font-bold italic'>Welcome to blog page</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

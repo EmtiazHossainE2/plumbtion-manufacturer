@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
 import Loading from '../../components/Loading';
+import PageTitle from '../../components/PageTitle';
 import auth from '../../Firebase/firebase.init';
 import useToken from '../../hooks/useToken';
 
@@ -76,6 +77,7 @@ const Login = () => {
 
     return (
         <section>
+            <PageTitle title="Login -"></PageTitle>
             <div className='flex flex-col lg:flex-row py-8 lg:h-[100vh] items-center justify-evenly gap-12 '>
                 <div>
                     <img className='lg:max-w-md' src="https://web.programming-hero.com/static/media/man-with-laptop.331dfa07.png" alt="login img" />

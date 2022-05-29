@@ -1,14 +1,19 @@
 import React from 'react';
 import construction from '../../assets/images/construction.png'
 import Footer from '../../components/Footer';
+import PageTitle from '../../components/PageTitle';
 
 const Contact = () => {
     return (
-        <div className='px-5'>
-            <img  src={construction} alt="construction" />
+        <>
+            <PageTitle title="Contact us - "></PageTitle>
+            <div className='px-5'>
+                <img src={construction} alt="construction" />
 
-            <Footer />
-        </div>
+                <Footer />
+            </div>
+        </>
+
     );
 };
 

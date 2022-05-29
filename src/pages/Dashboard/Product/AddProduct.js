@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import PageTitle from '../../../components/PageTitle';
 
 const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -72,6 +73,7 @@ const AddProduct = () => {
 
     return (
         <div className='bg-[#e4e6ed] pt-5 pb-12'>
+            <PageTitle title="Add Product -"></PageTitle>
             <div className="mx-5">
                 <div className="card  bg-base-100 shadow-xl">
                     <div className="card-body text-center">

@@ -8,6 +8,7 @@ import demoProfile from '../../../assets/images/demoProfile.png'
 import { BiEditAlt } from 'react-icons/bi';
 import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
+import PageTitle from '../../../components/PageTitle';
 
 
 
@@ -78,6 +79,7 @@ const MyProfile = () => {
 
     return (
         <div className='md:p-4 lg:pt-0'>
+            <PageTitle title="My Profile -"></PageTitle>
             <div className="card card-side bg-base-100 shadow-xl pb-5 mb-12">
                 <div className="card-body">
                     <div className='flex justify-between px-4'>

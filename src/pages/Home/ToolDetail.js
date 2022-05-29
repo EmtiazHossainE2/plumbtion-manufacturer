@@ -6,6 +6,7 @@ import {  useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Footer from '../../components/Footer';
 import Loading from '../../components/Loading';
+import PageTitle from '../../components/PageTitle';
 import auth from '../../Firebase/firebase.init';
 import useCheckAdmin from '../../hooks/useCheckAdmin';
 
@@ -91,6 +92,9 @@ const ToolDetail = () => {
 
     return (
         <div>
+            <PageTitle title="Detail - "></PageTitle>
+            {/* <PageTitle title="Detail - ${detail?.name}"></PageTitle> */}
+
             <div className='px-5 lg:px-20 py-8 lg:py-16'>
                 <div className="flex flex-col lg:flex-row justify-start items-center">
                     <div className="flex-1">

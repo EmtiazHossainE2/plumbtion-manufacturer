@@ -7,6 +7,7 @@ import { useQuery } from 'react-query';
 import Loading from '../../../components/Loading';
 import { AiOutlineGithub, AiOutlineLinkedin, AiOutlineFacebook } from 'react-icons/ai';
 import Swal from 'sweetalert2';
+import PageTitle from '../../../components/PageTitle';
 
 const EditProfileInfo = () => {
     const { profileId } = useParams()
@@ -68,6 +69,7 @@ const EditProfileInfo = () => {
 
     return (
         <div>
+            <PageTitle title="Edit Profile -"></PageTitle>
             <div className='p-5 '>
                 <div className="card card-side bg-base-100 shadow-xl pb-5 mb-12">
                     <div className="card-body">

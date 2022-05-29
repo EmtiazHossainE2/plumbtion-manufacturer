@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../../components/Loading';
+import PageTitle from '../../../components/PageTitle';
 import UserList from './UserList';
 
 const AllUsers = () => {
@@ -17,6 +18,7 @@ const AllUsers = () => {
     }
     return (
         <div className='md:p-4'>
+            <PageTitle title="All User -"></PageTitle>
             <h2 className=' text-xl py-5'>All Users {users.length}</h2>
             <div className="overflow-x-auto ">
                 <table className="table w-full">

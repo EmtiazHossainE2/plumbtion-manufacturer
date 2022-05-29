@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import PageTitle from '../../../components/PageTitle';
 import auth from '../../../Firebase/firebase.init';
 
 const ReviewHere = () => {
@@ -46,6 +47,7 @@ const ReviewHere = () => {
 
     return (
         <div className='bg-[#e4e6ed] py-12'>
+            <PageTitle title="Review -"></PageTitle>
             <div className="flex items-center justify-center">
                 <div className="card  w-96 bg-base-100 shadow-xl">
                     <div className="card-body items-center text-center">

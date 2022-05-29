@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Loading from '../../../components/Loading';
+import PageTitle from '../../../components/PageTitle';
 import auth from '../../../Firebase/firebase.init';
 import Order from './Order';
 
@@ -41,6 +42,7 @@ const MyOrder = () => {
 
     return (
         <div>
+            <PageTitle title="My Order -"></PageTitle>
             <h2 className='md:p-4 text-xl'>Hello , {user?.displayName} . You have {myOrders.length} booking</h2>
             <div className='md:p-4'>
                 <div className="overflow-x-auto">

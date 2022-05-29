@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Loading from '../../../components/Loading';
+import PageTitle from '../../../components/PageTitle';
 import auth from '../../../Firebase/firebase.init';
 import ProductRow from './ProductRow';
 
@@ -39,6 +40,7 @@ const ManageProducts = () => {
 
     return (
         <div>
+            <PageTitle title="Manage Product -"></PageTitle>
             <h2 className='md:p-4 text-xl'>Manage All Products {products.length}</h2>
             <div className='md:p-4'>
                 <div className="overflow-x-auto">

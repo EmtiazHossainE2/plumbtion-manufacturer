@@ -4,6 +4,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import Loading from '../../../components/Loading';
+import PageTitle from '../../../components/PageTitle';
 import CheckOutForm from './CheckOutForm';
 
 const stripePromise = loadStripe('pk_test_51L14pjDEsxnXfJbTiZgmC0dz3uHctqNriljNuVFrVk6oTpM7wsc9tHAymdCZlelQzHvDWCKD1yfU0LY6Ccm13tpi00ExQ2fXbe')
@@ -23,6 +24,7 @@ const Payment = () => {
     }
     return (
         <div>
+            <PageTitle title="Payment -"></PageTitle>
             <div className='text-center py-5'>
                 <p className='text-2xl'>Payment for <span className='text-lg font-bold text-success'>{myOrder?.pipeName}</span></p>
             </div>

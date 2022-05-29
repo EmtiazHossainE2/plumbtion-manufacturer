@@ -1,7 +1,7 @@
 #  Welcome to Plumbtion Manufacture Website 
 
 
-## [Server Repo](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-EmtiazHossainE2)
+## [Server Repo](https://github.com/EmtiazHossainE2/plumbtion-manufacturer-server.git)
 
 
 ## [Live Link](https://plumbtion-manufacturer.web.app/)
@@ -39,5 +39,5 @@
 
 # Website demo 
 
-![Desktop  View](https://i.ibb.co/xX0F0zG/home2.jpg "Plumbtion Manufacture Demo")
+![Desktop  View](https://i.ibb.co/0X5T9nJ/plumbtion3.jpg "Plumbtion Manufacture Demo")
 

@@ -14,7 +14,7 @@ const Navbar = ({ children }) => {
     const [admin] = useCheckAdmin(user)
     const [myImg, setMyImg] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/profile-img/${user?.email}`, {
+        fetch(`https://plumbtion-manufacturer.herokuapp.com/profile-img/${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

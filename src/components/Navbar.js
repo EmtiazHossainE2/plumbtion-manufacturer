@@ -1,6 +1,6 @@
 
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo1.png'
@@ -12,6 +12,19 @@ const Navbar = ({ children }) => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth)
     const [admin] = useCheckAdmin(user)
+    const [myImg, setMyImg] = useState({})
+    useEffect(() => {
+        fetch(`http://localhost:5000/profile-img/${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => res.json())
+            .then(data => setMyImg(data))
+    }, [user?.email])
+
+    // console.log(myImg);
 
 
     const logOut = () => {
@@ -32,7 +45,7 @@ const Navbar = ({ children }) => {
         </li>
         <li>
             <NavLink to='/contact' className='rounded-lg '>
-                Contact 
+                Contact
             </NavLink>
         </li>
         <li>
@@ -45,18 +58,18 @@ const Navbar = ({ children }) => {
                 My Portfolio
             </NavLink>
         </li>
-        {user?.email
+        {myImg?.email
             ?
             <li className='dropdown  dropdown-end '>
                 <label
                     tabIndex='0'
                     className='rounded-lg'
                 >
-                    {user?.photoURL
+                    {myImg?.photoURL
                         ?
                         <div className="avatar">
                             <div className="w-8  rounded-full cursor-pointer">
-                                <img src={user?.photoURL} alt="User" />
+                                <img src={myImg?.photoURL} alt="User" />
                             </div>
                         </div>
                         :

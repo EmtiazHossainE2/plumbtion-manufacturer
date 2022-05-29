@@ -11,7 +11,7 @@ import ProductRow from './ProductRow';
 const ManageProducts = () => {
     const navigate = useNavigate()
 
-    const { data: products, isLoading, error, refetch } = useQuery('product', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/tool`, {
+    const { data: products, isLoading,  refetch } = useQuery('product', () => fetch(`https://plumbtion-manufacturer.herokuapp.com/tool`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

@@ -9,6 +9,10 @@
 
 
 ##  Features and Functionality
+
+        Admin panel 
+        admin1@gmail.com
+        123456@
  
 * This project create with react . In the home page i'm showing some banner , display some tools ,our experience, business summary, review about us , contact form, footer etc . This project is fully responsive both desktop and mobile view .
 

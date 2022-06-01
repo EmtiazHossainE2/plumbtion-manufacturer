@@ -58,7 +58,7 @@ const Navbar = ({ children }) => {
                 My Portfolio
             </NavLink>
         </li>
-        {myImg?.email
+        {user?.email
             ?
             <li className='dropdown  dropdown-end '>
                 <label

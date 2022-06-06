@@ -5,7 +5,7 @@ import './Banner.css'
 const Banner = () => {
     return (
         <div className="bg-container">
-            <div className="pb-16 pt-24 bg-overlay">
+            <div className="pb-16 pt-16 bg-overlay">
                 <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center items-center  lg:px-12 order-last lg:order-first px-3">
                     <div className='lg:px-8 font-bold space-y-2 text-white'>
                         <h1 className="text-3xl ">Plumbtion is well established </h1>

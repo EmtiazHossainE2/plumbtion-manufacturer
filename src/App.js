@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './pages/About/About';
 import Login from './pages/Account/Login';
@@ -29,15 +29,16 @@ import Analysis from './pages/Home/Features/Analysis';
 import Strategy from './pages/Home/Features/Strategy';
 
 const App = () => {
-    const ref = useRef()
-    const location = useLocation();
-    useEffect(() => {
-        ref.current.scrollIntoView({ behavior: "smooth" });
-    }, [location]);
+    // const ref = useRef()
+    // const location = useLocation();
+    // useEffect(() => {
+    //     ref.current.scrollIntoView({ behavior: "smooth" });
+    // }, [location]);
+    
     return (
         <div >
             <Navbar>
-            <div ref={ref}></div>
+            {/* <div ref={ref}></div> */}
                 
                 <Routes >
                     <Route path='/' element={<Home />}>

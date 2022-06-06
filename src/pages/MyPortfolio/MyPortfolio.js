@@ -10,7 +10,7 @@ const MyPortfolio = () => {
     return (
         <section>
             <PageTitle title="My Portfolio -"></PageTitle>
-            <div className='px-5 lg:px-12 bg-[#f0efef] py-10'>
+            <div className='px-5 lg:px-12 bg-[#f0efef] pb-10'>
                 <div className='flex flex-col md:flex-row items-center justify-center gap-12 py-10'>
                     <div className="avatar">
                         <div className="w-40 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

@@ -4,7 +4,7 @@ import demoProfile from '../../../assets/images/demoProfile.png'
 
 const ManageReviewRow = ({ review, index, refetch }) => {
     const { _id , name, country ,rating } = review
-    console.log(review);
+    // console.log(review);
 
     const handleDelete = () => {
         const url = `https://plumbtion-manufacturer.herokuapp.com/review/${_id}`;

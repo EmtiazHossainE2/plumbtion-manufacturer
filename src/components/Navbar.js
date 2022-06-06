@@ -25,7 +25,7 @@ const Navbar = ({ children }) => {
 
     // console.log(myImg);
 
-    
+
     const logOut = () => {
         signOut(auth)
         navigate('/login');
@@ -96,6 +96,7 @@ const Navbar = ({ children }) => {
                             <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
                             <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
                             <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                            <li><NavLink to='/dashboard/manage-reviews' className='text-lg'>Manage Reviews</NavLink></li>
                         </>
                     }
                     <li><button onClick={logOut} className='text-lg'>Log Out</button></li>
@@ -187,6 +188,7 @@ const Navbar = ({ children }) => {
                                                     <li><NavLink to='/dashboard/add-product' className='text-lg'>Add Product</NavLink></li>
                                                     <li><NavLink to='/dashboard/manage-order' className='text-lg'>Manage Order</NavLink></li>
                                                     <li><NavLink to='/dashboard/manage-product' className='text-lg'>Manage Product</NavLink></li>
+                                                    <li><NavLink to='/dashboard/manage-reviews' className='text-lg'>Manage Reviews</NavLink></li>
                                                 </>
                                             }
                                             <li><button onClick={logOut} className='text-lg'>Log Out</button></li>

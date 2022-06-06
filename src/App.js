@@ -27,6 +27,7 @@ import QuickResponse from './pages/Home/Features/QuickResponse';
 import Planning from './pages/Home/Features/Planning';
 import Analysis from './pages/Home/Features/Analysis';
 import Strategy from './pages/Home/Features/Strategy';
+import ManageReviews from './pages/Dashboard/Review/ManageReviews';
 
 const App = () => {
     // const ref = useRef()
@@ -80,6 +81,9 @@ const App = () => {
                         </RequireAdmin>}></Route>
                         <Route path='manage-product' element={<RequireAdmin>
                             <ManageProducts />
+                        </RequireAdmin>}></Route>
+                        <Route path='manage-reviews' element={<RequireAdmin>
+                            <ManageReviews />
                         </RequireAdmin>}></Route>
 
                         {/* admin */}

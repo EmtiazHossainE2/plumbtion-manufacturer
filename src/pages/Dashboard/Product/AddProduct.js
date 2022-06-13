@@ -72,7 +72,7 @@ const AddProduct = () => {
 
 
     return (
-        <div className='bg-[#e4e6ed] pt-5 pb-12'>
+        <div className=' pt-5 pb-12'>
             <PageTitle title="Add Product -"></PageTitle>
             <div className="mx-5">
                 <div className="card  bg-base-100 shadow-xl">

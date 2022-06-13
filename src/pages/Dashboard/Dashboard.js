@@ -14,8 +14,10 @@ const Dashboard = () => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content  justify-center pt-5">
                     {/* <!-- Page content here --> */}
+                    <div className="container mx-auto">
                     <h2 className='text-3xl text-purple-700 text-center pb-5'>DashBoard </h2>
                     <Outlet />
+                    </div>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>

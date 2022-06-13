@@ -5,7 +5,7 @@ import { GrGroup } from 'react-icons/gr';
 const BusinessSummary = () => {
     
     return (
-        <div className='lg:px-12 md:pt-8 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4 mx-4  mb-12'>
+        <div className='container mx-auto md:pt-8 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4 px-4  mb-12'>
             <div className="card lg:max-w-lg bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                     <span className='text-5xl'><GiPipes/></span>

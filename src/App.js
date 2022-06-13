@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './pages/About/About';
 import Login from './pages/Account/Login';
-import Signup from './pages/Account/SignUp';
 import Blog from './pages/Blog/Blog';
 import Contact from './pages/Contact/Contact';
 import Home from './pages/Home/Home';
@@ -28,6 +27,7 @@ import Planning from './pages/Home/Features/Planning';
 import Analysis from './pages/Home/Features/Analysis';
 import Strategy from './pages/Home/Features/Strategy';
 import ManageReviews from './pages/Dashboard/Review/ManageReviews';
+import SignUp from './pages/Account/SignUp';
 
 const App = () => {
     // const ref = useRef()
@@ -35,12 +35,11 @@ const App = () => {
     // useEffect(() => {
     //     ref.current.scrollIntoView({ behavior: "smooth" });
     // }, [location]);
-    
+
     return (
-        <div  className=' mx-auto container'>
-            <Navbar>
-            {/* <div ref={ref}></div> */}
-                
+        <Navbar>
+                {/* <div ref={ref}></div> */}
+
                 <Routes >
                     <Route path='/' element={<Home />}>
                         <Route path='/' element={<QuickResponse />}></Route>
@@ -57,7 +56,7 @@ const App = () => {
                     <Route path='/contact' element={<Contact />}></Route>
                     <Route path='/portfolio' element={<MyPortfolio />}></Route>
                     <Route path='/login' element={<Login />}></Route>
-                    <Route path='/signup' element={<Signup />}></Route>
+                    <Route path='/signup' element={<SignUp />}></Route>
 
                     {/* dashboard start */}
 
@@ -97,8 +96,7 @@ const App = () => {
                     <Route path='*' element={<NotFound />}></Route>
                 </Routes>
                 <Toaster />
-            </Navbar>
-        </div>
+        </Navbar>
     );
 };
 

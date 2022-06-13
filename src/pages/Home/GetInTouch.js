@@ -4,8 +4,8 @@ import { AiOutlineContacts } from 'react-icons/ai';
 
 const GetInTouch = () => {
     return (
-        <div className='py-20 px-3 lg:px-12 bg-[#e4e6ed]'>
-            <div className='flex flex-col lg:flex-row gap-8'>
+        <div className='py-20 px-5 bg-[#e4e6ed]'>
+            <div className='flex flex-col lg:flex-row gap-8 container mx-auto'>
                 <div className='basis-1/3'>
                     <div>
                         <img className='lg:max-w-xl' src={banner4} alt="factory" />

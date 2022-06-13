@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
-        <div className='text-center'>
-            <footer className="footer p-12 bg-[#eeeff0] text-base-content">
+        <div className='text-center bg-[#eeeff0]'>
+            <footer className="footer p-12   text-base-content container mx-auto">
                 <div>
                     <div>
                         <img className='w-[200px] py-2' src="https://i.ibb.co/9GBLfHR/logo1.png" alt="" />

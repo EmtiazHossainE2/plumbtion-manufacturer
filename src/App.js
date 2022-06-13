@@ -37,7 +37,7 @@ const App = () => {
     // }, [location]);
     
     return (
-        <div >
+        <div  className=' mx-auto container'>
             <Navbar>
             {/* <div ref={ref}></div> */}
                 

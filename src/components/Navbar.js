@@ -33,7 +33,7 @@ const Navbar = ({ children }) => {
     }
     const menuItems = <>
         <li>
-            <NavLink to='/home' className='rounded-lg '>
+            <NavLink to='/' className='rounded-lg '>
                 Home
             </NavLink>
         </li>
@@ -52,11 +52,11 @@ const Navbar = ({ children }) => {
                 About
             </NavLink>
         </li>
-        <li>
+        {/* <li>
             <NavLink to='/portfolio' className='rounded-lg '>
                 My Portfolio
             </NavLink>
-        </li>
+        </li> */}
         {user?.email
             ?
             <li className='dropdown  dropdown-end '>

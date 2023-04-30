@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './Banner.css'
 
 const Banner = () => {
+
+    
     return (
         <div className="bg-container">
             <div className="py-16 bg-overlay">

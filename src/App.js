@@ -28,6 +28,7 @@ import Analysis from './pages/Home/Features/Analysis';
 import Strategy from './pages/Home/Features/Strategy';
 import ManageReviews from './pages/Dashboard/Review/ManageReviews';
 import SignUp from './pages/Account/SignUp';
+import CardGenDUET from './pages/CardGenDUET/CardGenDUET';
 
 const App = () => {
     // const ref = useRef()
@@ -37,66 +38,104 @@ const App = () => {
     // }, [location]);
 
     return (
-        <Navbar>
-                {/* <div ref={ref}></div> */}
+      <Navbar>
+        {/* <div ref={ref}></div> */}
 
-                <Routes >
-                    <Route path='/' element={<Home />}>
-                        <Route path='/' element={<QuickResponse />}></Route>
-                        <Route path='/planning' element={<Planning />}></Route>
-                        <Route path='/analysis' element={<Analysis />}></Route>
-                        <Route path='/strategy' element={<Strategy />}></Route>
-                    </Route>
-                    <Route path='/home' element={<Home />}></Route>
-                    <Route path='/tool/:toolId' element={
-                        <RequireAuth><ToolDetail /></RequireAuth>
-                    }></Route>
-                    <Route path='/blog' element={<Blog />}></Route>
-                    <Route path='/about' element={<About />}></Route>
-                    <Route path='/contact' element={<Contact />}></Route>
-                    <Route path='/portfolio' element={<MyPortfolio />}></Route>
-                    <Route path='/login' element={<Login />}></Route>
-                    <Route path='/signup' element={<SignUp />}></Route>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route path="/" element={<QuickResponse />}></Route>
+            <Route path="/planning" element={<Planning />}></Route>
+            <Route path="/analysis" element={<Analysis />}></Route>
+            <Route path="/strategy" element={<Strategy />}></Route>
+          </Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route
+            path="/tool/:toolId"
+            element={
+              <RequireAuth>
+                <ToolDetail />
+              </RequireAuth>
+            }
+          ></Route>
+          <Route path="/blog" element={<Blog />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/portfolio" element={<MyPortfolio />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          {/* <Route path="/duet-card" element={<CardGenDUET />}></Route> */}
 
-                    {/* dashboard start */}
+          {/* dashboard start */}
 
-                    <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
-                        <Route path='my-profile' element={<MyProfile />}></Route>
-                        <Route path='my-profile/:profileId' element={<EditProfileInfo />}></Route>
-                        <Route path='my-order' element={<MyOrder />}></Route>
-                        <Route path="payment/:orderId" element={<Payment />}></Route>
-                        <Route path='add-review' element={<ReviewHere />}></Route>
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          >
+            <Route path="my-profile" element={<MyProfile />}></Route>
+            <Route
+              path="my-profile/:profileId"
+              element={<EditProfileInfo />}
+            ></Route>
+            <Route path="my-order" element={<MyOrder />}></Route>
+            <Route path="payment/:orderId" element={<Payment />}></Route>
+            <Route path="add-review" element={<ReviewHere />}></Route>
 
-                        {/* admin */}
+            {/* admin */}
 
-                        <Route path='users' element={<RequireAdmin>
-                            <AllUsers />
-                        </RequireAdmin>}></Route>
-                        <Route path='add-product' element={<RequireAdmin>
-                            <AddProduct />
-                        </RequireAdmin>}></Route>
-                        <Route path='manage-order' element={<RequireAdmin>
-                            <ManageOrders />
-                        </RequireAdmin>}></Route>
-                        <Route path='manage-product' element={<RequireAdmin>
-                            <ManageProducts />
-                        </RequireAdmin>}></Route>
-                        <Route path='manage-reviews' element={<RequireAdmin>
-                            <ManageReviews />
-                        </RequireAdmin>}></Route>
+            <Route
+              path="users"
+              element={
+                <RequireAdmin>
+                  <AllUsers />
+                </RequireAdmin>
+              }
+            ></Route>
+            <Route
+              path="add-product"
+              element={
+                <RequireAdmin>
+                  <AddProduct />
+                </RequireAdmin>
+              }
+            ></Route>
+            <Route
+              path="manage-order"
+              element={
+                <RequireAdmin>
+                  <ManageOrders />
+                </RequireAdmin>
+              }
+            ></Route>
+            <Route
+              path="manage-product"
+              element={
+                <RequireAdmin>
+                  <ManageProducts />
+                </RequireAdmin>
+              }
+            ></Route>
+            <Route
+              path="manage-reviews"
+              element={
+                <RequireAdmin>
+                  <ManageReviews />
+                </RequireAdmin>
+              }
+            ></Route>
 
-                        {/* admin */}
+            {/* admin */}
+          </Route>
 
-                    </Route>
+          {/* dashboard end */}
 
-
-                    {/* dashboard end */}
-
-
-                    <Route path='*' element={<NotFound />}></Route>
-                </Routes>
-                <Toaster />
-        </Navbar>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+        <Toaster />
+      </Navbar>
     );
 };
 
